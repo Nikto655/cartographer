@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "snippets": [
+    {
+      "id": "s1",
+      "label": "tools/call",
+      "lang": "json",
+      "code": "{\n  \"jsonrpc\": \"2.0\", \"id\": 7,\n  \"method\": \"tools/call\",\n  \"params\": {\n    \"name\": \"create_nodes\",\n    \"arguments\": {\n      \"boardId\": \"signup-flow\",\n      \"nodes\": [{ \"title\": \"Payment screen\", \"body\": \"Collects card details…\" }]\n    }\n  }\n}"
+    }
+  ],
+  "outSnippetId": "s1"
+}

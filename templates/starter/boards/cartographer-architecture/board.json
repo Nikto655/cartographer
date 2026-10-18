@@ -1,0 +1,944 @@
+{
+  "id": "cartographer-architecture",
+  "name": "Cartographer Architecture",
+  "boardType": "graph",
+  "nodes": [
+    {
+      "id": "board-json",
+      "type": "entity",
+      "title": "board.json",
+      "position": {
+        "x": 182,
+        "y": 73
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "node-md",
+      "type": "entity",
+      "title": "node.md",
+      "position": {
+        "x": -87,
+        "y": 112
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "node-data-json",
+      "type": "entity",
+      "title": "node.data.json",
+      "position": {
+        "x": -339,
+        "y": -108
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "app-db",
+      "type": "entity",
+      "title": "app.db",
+      "position": {
+        "x": 76,
+        "y": -248
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "folders-json",
+      "type": "entity",
+      "title": "folders.json",
+      "position": {
+        "x": 12,
+        "y": -440
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "archive",
+      "type": "entity",
+      "title": "archive/",
+      "position": {
+        "x": -196,
+        "y": -389
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "snapshots",
+      "type": "entity",
+      "title": "snapshots/",
+      "position": {
+        "x": 209,
+        "y": -433
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "config-json",
+      "type": "entity",
+      "title": "config.json",
+      "position": {
+        "x": 346,
+        "y": -254
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "core-storage-ts",
+      "type": "entity",
+      "title": "core/storage.ts",
+      "position": {
+        "x": -29,
+        "y": 18
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "core-db-ts",
+      "type": "entity",
+      "title": "core/db.ts",
+      "position": {
+        "x": -2,
+        "y": -177
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "core-locks-ts",
+      "type": "entity",
+      "title": "core/locks.ts",
+      "position": {
+        "x": 201,
+        "y": 15
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "core-markdown-ts",
+      "type": "entity",
+      "title": "core/markdown.ts",
+      "position": {
+        "x": -123,
+        "y": -16
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "core-data-ts",
+      "type": "entity",
+      "title": "core/data.ts",
+      "position": {
+        "x": -275,
+        "y": -29
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "core-boardevents-ts",
+      "type": "entity",
+      "title": "core/boardEvents.ts",
+      "position": {
+        "x": 134,
+        "y": -41
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "core-config-ts",
+      "type": "entity",
+      "title": "core/config.ts",
+      "position": {
+        "x": 384,
+        "y": -166
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "modules-boards",
+      "type": "entity",
+      "title": "modules/boards",
+      "position": {
+        "x": 73,
+        "y": 54
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "modules-nodes",
+      "type": "entity",
+      "title": "modules/nodes",
+      "position": {
+        "x": -161,
+        "y": 53
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "modules-frames",
+      "type": "entity",
+      "title": "modules/frames",
+      "position": {
+        "x": -307,
+        "y": 159
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "modules-shares",
+      "type": "entity",
+      "title": "modules/shares",
+      "position": {
+        "x": 28,
+        "y": -39
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:33.565Z"
+      }
+    },
+    {
+      "id": "modules-mcp",
+      "type": "entity",
+      "title": "modules/mcp",
+      "position": {
+        "x": -75,
+        "y": 35
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:54.741Z"
+      },
+      "childBoards": [
+        "mcp-toolset"
+      ]
+    },
+    {
+      "id": "modules-auth",
+      "type": "entity",
+      "title": "modules/auth",
+      "position": {
+        "x": -45,
+        "y": -273
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:54.741Z"
+      }
+    },
+    {
+      "id": "modules-tokens",
+      "type": "entity",
+      "title": "modules/tokens",
+      "position": {
+        "x": -115,
+        "y": -191
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:54.741Z"
+      }
+    },
+    {
+      "id": "modules-folders",
+      "type": "entity",
+      "title": "modules/folders",
+      "position": {
+        "x": 98,
+        "y": -396
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:54.741Z"
+      }
+    },
+    {
+      "id": "modules-search",
+      "type": "entity",
+      "title": "modules/search",
+      "position": {
+        "x": -415,
+        "y": 169
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:54.741Z"
+      }
+    },
+    {
+      "id": "modules-snapshots",
+      "type": "entity",
+      "title": "modules/snapshots",
+      "position": {
+        "x": -205,
+        "y": 114
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:54.741Z"
+      }
+    },
+    {
+      "id": "modules-export",
+      "type": "entity",
+      "title": "modules/export",
+      "position": {
+        "x": 287,
+        "y": 360
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:54.741Z"
+      }
+    },
+    {
+      "id": "rest-routes-api",
+      "type": "entity",
+      "title": "REST routes (/api)",
+      "position": {
+        "x": -22,
+        "y": 123
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:54.741Z"
+      }
+    },
+    {
+      "id": "post-mcp",
+      "type": "entity",
+      "title": "POST /mcp",
+      "position": {
+        "x": -148,
+        "y": -87
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:54.741Z"
+      }
+    },
+    {
+      "id": "shared-api-ts",
+      "type": "entity",
+      "title": "shared/api.ts",
+      "position": {
+        "x": 71,
+        "y": 214
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:54.741Z"
+      }
+    },
+    {
+      "id": "shared-store-ts",
+      "type": "entity",
+      "title": "shared/store.ts",
+      "position": {
+        "x": -23,
+        "y": 265
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:54.741Z"
+      }
+    },
+    {
+      "id": "canvas-react-flow",
+      "type": "entity",
+      "title": "Canvas (React Flow)",
+      "position": {
+        "x": 15,
+        "y": 198
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:54.741Z"
+      }
+    },
+    {
+      "id": "node-panel",
+      "type": "entity",
+      "title": "Node panel",
+      "position": {
+        "x": -100,
+        "y": 227
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:54.741Z"
+      }
+    },
+    {
+      "id": "dashboard",
+      "type": "entity",
+      "title": "Dashboard",
+      "position": {
+        "x": -35,
+        "y": 374
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:54.741Z"
+      }
+    },
+    {
+      "id": "board-types-registry",
+      "type": "entity",
+      "title": "board-types registry",
+      "position": {
+        "x": 124,
+        "y": 274
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:54.741Z"
+      }
+    },
+    {
+      "id": "packages-shared",
+      "type": "entity",
+      "title": "packages/shared",
+      "position": {
+        "x": 158,
+        "y": 149
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:51:54.741Z"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-ms9npg9h-1uxec",
+      "source": "node-md",
+      "target": "core-markdown-ts",
+      "label": "parse"
+    },
+    {
+      "id": "edge-ms9npg9h-1vrey",
+      "source": "node-data-json",
+      "target": "core-data-ts",
+      "label": "normalise"
+    },
+    {
+      "id": "edge-ms9npg9h-1wh4u",
+      "source": "board-json",
+      "target": "modules-boards",
+      "label": "read"
+    },
+    {
+      "id": "edge-ms9npg9h-1xf6b",
+      "source": "app-db",
+      "target": "core-db-ts",
+      "label": "read"
+    },
+    {
+      "id": "edge-ms9npg9h-1y6ff",
+      "source": "folders-json",
+      "target": "modules-folders",
+      "label": "read"
+    },
+    {
+      "id": "edge-ms9npg9h-1zpo5",
+      "source": "config-json",
+      "target": "core-config-ts",
+      "label": "merge"
+    },
+    {
+      "id": "edge-ms9npg9h-209ug",
+      "source": "core-storage-ts",
+      "target": "modules-boards",
+      "label": "fs"
+    },
+    {
+      "id": "edge-ms9npg9h-21eh7",
+      "source": "core-storage-ts",
+      "target": "modules-nodes",
+      "label": "fs"
+    },
+    {
+      "id": "edge-ms9npg9h-22llx",
+      "source": "core-db-ts",
+      "target": "modules-auth",
+      "label": "sql"
+    },
+    {
+      "id": "edge-ms9npg9h-2331l",
+      "source": "core-db-ts",
+      "target": "modules-shares",
+      "label": "sql"
+    },
+    {
+      "id": "edge-ms9npg9h-24wlc",
+      "source": "core-db-ts",
+      "target": "modules-tokens",
+      "label": "sql"
+    },
+    {
+      "id": "edge-ms9npg9h-25gcs",
+      "source": "core-markdown-ts",
+      "target": "modules-nodes"
+    },
+    {
+      "id": "edge-ms9npg9h-26sob",
+      "source": "core-data-ts",
+      "target": "modules-nodes"
+    },
+    {
+      "id": "edge-ms9npg9h-27lxx",
+      "source": "modules-boards",
+      "target": "core-locks-ts",
+      "label": "withLock"
+    },
+    {
+      "id": "edge-ms9npg9h-2856b",
+      "source": "modules-boards",
+      "target": "board-json",
+      "label": "atomic write"
+    },
+    {
+      "id": "edge-ms9npg9h-29ibc",
+      "source": "modules-nodes",
+      "target": "node-md",
+      "label": "write"
+    },
+    {
+      "id": "edge-ms9npg9h-2agw9",
+      "source": "core-data-ts",
+      "target": "node-data-json",
+      "label": "write back"
+    },
+    {
+      "id": "edge-ms9npg9h-2bvnw",
+      "source": "modules-boards",
+      "target": "core-boardevents-ts",
+      "label": "announces"
+    },
+    {
+      "id": "edge-ms9npg9h-2cyvv",
+      "source": "core-boardevents-ts",
+      "target": "modules-shares",
+      "label": "follows renames"
+    },
+    {
+      "id": "edge-ms9npg9h-2dgr6",
+      "source": "modules-frames",
+      "target": "modules-snapshots",
+      "label": "snapshot first"
+    },
+    {
+      "id": "edge-ms9npg9h-2eqmy",
+      "source": "modules-mcp",
+      "target": "modules-snapshots",
+      "label": "first write of a run"
+    },
+    {
+      "id": "edge-ms9npg9h-2filk",
+      "source": "modules-mcp",
+      "target": "modules-boards",
+      "label": "same services"
+    },
+    {
+      "id": "edge-ms9npg9h-2gs6r",
+      "source": "modules-mcp",
+      "target": "modules-nodes",
+      "label": "same services"
+    },
+    {
+      "id": "edge-ms9npg9h-2h6rv",
+      "source": "modules-boards",
+      "target": "rest-routes-api"
+    },
+    {
+      "id": "edge-ms9npg9h-2i7bj",
+      "source": "modules-nodes",
+      "target": "rest-routes-api"
+    },
+    {
+      "id": "edge-ms9npg9h-2j4z6",
+      "source": "modules-shares",
+      "target": "rest-routes-api"
+    },
+    {
+      "id": "edge-ms9npg9h-2kxug",
+      "source": "post-mcp",
+      "target": "modules-mcp",
+      "label": "identify · session"
+    },
+    {
+      "id": "edge-ms9npg9h-2l4gz",
+      "source": "modules-tokens",
+      "target": "post-mcp",
+      "label": "authenticates"
+    },
+    {
+      "id": "edge-ms9npg9h-2m1ee",
+      "source": "rest-routes-api",
+      "target": "shared-api-ts"
+    },
+    {
+      "id": "edge-ms9npg9h-2nxv9",
+      "source": "shared-api-ts",
+      "target": "shared-store-ts",
+      "label": "typed"
+    },
+    {
+      "id": "edge-ms9npg9h-2oedn",
+      "source": "shared-store-ts",
+      "target": "canvas-react-flow",
+      "label": "boardToFlow"
+    },
+    {
+      "id": "edge-ms9npg9h-2pzcc",
+      "source": "shared-store-ts",
+      "target": "node-panel"
+    },
+    {
+      "id": "edge-ms9npg9h-2q6e5",
+      "source": "shared-store-ts",
+      "target": "dashboard",
+      "label": "summaries"
+    },
+    {
+      "id": "edge-ms9npg9h-2r12o",
+      "source": "board-types-registry",
+      "target": "canvas-react-flow",
+      "label": "picks the world"
+    },
+    {
+      "id": "edge-ms9npg9h-2s3rt",
+      "source": "shared-store-ts",
+      "target": "rest-routes-api",
+      "label": "autosave 1 s"
+    },
+    {
+      "id": "edge-ms9npg9h-2tv5h",
+      "source": "node-panel",
+      "target": "rest-routes-api",
+      "label": "notes 800 ms"
+    },
+    {
+      "id": "edge-ms9npg9h-2uokt",
+      "source": "packages-shared",
+      "target": "modules-boards",
+      "label": "types",
+      "style": "dashed"
+    },
+    {
+      "id": "edge-ms9npg9h-2vpdg",
+      "source": "packages-shared",
+      "target": "shared-api-ts",
+      "label": "types",
+      "style": "dashed"
+    }
+  ],
+  "frames": [],
+  "texts": [],
+  "createdAt": "2026-08-01T00:51:09.140Z",
+  "updatedAt": "2026-08-01T01:10:15.589Z",
+  "viewport": {
+    "x": 747.5208162180436,
+    "y": 565.3670236551824,
+    "zoom": 0.7668384281010104
+  }
+}

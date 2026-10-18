@@ -1,0 +1,19 @@
+# dependencies and build output
+node_modules/
+dist/
+*.tsbuildinfo
+
+# runtime data: every board, node file and the SQLite database
+data/
+
+# secrets — copy .env.example instead
+.env
+.env.*
+!.env.example
+
+# local tooling
+.claude/settings.local.json
+.vscode/
+.idea/
+*.log
+.DS_Store

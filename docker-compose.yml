@@ -1,0 +1,51 @@
+# Cartographer
+#
+#   cp .env.example .env      # set ADMIN_PASSWORD
+#   docker compose up -d --build
+#
+# Settings come from .env (git-ignored), so no secret lives in this file.
+# Every option is described in docs/CONFIGURATION.md.
+#
+# The container speaks plain http on 127.0.0.1:56321. Put a reverse proxy in
+# front of it to terminate TLS; on a public host that is not optional.
+
+services:
+  cartographer:
+    build: .
+    container_name: cartographer
+    restart: unless-stopped
+
+    ports:
+      # Local only on purpose: the proxy connects here. Use '0.0.0.0:56321:56321'
+      # only to reach it directly over a private network.
+      - '127.0.0.1:56321:56321'
+
+    volumes:
+      # All your data: boards, node files, snapshots and the account database.
+      - cartographer-data:/data
+
+    environment:
+      # First boot only: creates the admin account, which must change its
+      # password at first sign-in. Editing these later changes nothing, but
+      # keep ADMIN_PASSWORD set: compose refuses to run without it.
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Set ADMIN_PASSWORD in .env before the first boot}
+      ADMIN_DISPLAY_NAME: ${ADMIN_DISPLAY_NAME:-}
+
+      # Set true once you sign in over https, never before.
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      # true behind a reverse proxy, which is how this file is meant to run.
+      TRUST_PROXY: ${TRUST_PROXY:-true}
+
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      TZ: ${TZ:-UTC}
+
+    logging:
+      driver: json-file
+      options:
+        max-size: '10m'
+        max-file: '5'
+
+volumes:
+  cartographer-data:
+    name: cartographer-data

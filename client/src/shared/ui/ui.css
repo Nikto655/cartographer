@@ -1,0 +1,446 @@
+/* The design system in code — every value from tokens.css. */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: 32px;
+  padding: 0 var(--sp-3);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--text-mid);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+.btn:hover:not(:disabled) {
+  background: var(--bg-inset);
+  color: var(--text-hi);
+}
+.btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.btn--primary {
+  background: var(--accent);
+  border-color: transparent;
+  color: #fff;
+}
+.btn--primary:hover:not(:disabled) {
+  background: var(--accent);
+  color: #fff;
+  filter: brightness(1.06);
+}
+.btn--ghost {
+  border-color: transparent;
+}
+.btn--danger:hover:not(:disabled) {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+.btn--icon {
+  min-width: 32px;
+  padding: 0 var(--sp-2);
+}
+.btn--active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---- floating frosted chrome (§5.1) ---- */
+.pill {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  height: var(--chrome-height);
+  padding: 0 var(--sp-2);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-pill);
+  background: var(--bg-chrome);
+  -webkit-backdrop-filter: var(--chrome-blur);
+  backdrop-filter: var(--chrome-blur);
+  box-shadow: var(--shadow-float);
+  pointer-events: auto;
+}
+.pill__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-width: 34px;
+  height: 34px;
+  padding: 0 var(--sp-2);
+  border: none;
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.pill__btn:hover:not(:disabled) {
+  background: var(--bg-inset);
+  color: var(--text-hi);
+}
+.pill__btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.pill__btn.is-active {
+  background: var(--accent);
+  color: #fff;
+}
+.pill__sep {
+  width: 1px;
+  height: 20px;
+  margin: 0 var(--sp-1);
+  background: var(--line-hair);
+  flex: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  height: 22px;
+  padding: 0 var(--sp-2);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  color: var(--text-mid);
+  font-size: var(--type-label);
+  white-space: nowrap;
+}
+.chip--button {
+  cursor: pointer;
+}
+.chip--button:hover {
+  background: var(--bg-inset);
+  color: var(--text-hi);
+}
+.chip__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: currentColor;
+  flex: none;
+}
+
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border: 1px solid var(--line-hair);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--bg-inset);
+  color: var(--text-mid);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1;
+}
+
+.tooltip-wrap {
+  position: relative;
+  display: inline-flex;
+}
+.tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-float);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 4px var(--sp-2);
+  border-radius: var(--radius-control);
+  background: var(--text-hi);
+  color: var(--bg-card);
+  font-size: var(--type-label);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.tooltip .kbd {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: transparent;
+  color: var(--bg-card);
+}
+
+.tabs {
+  display: flex;
+  gap: var(--sp-1);
+  border-bottom: 1px solid var(--line-hair);
+}
+.tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  height: 34px;
+  padding: 0 var(--sp-3);
+  border: none;
+  background: none;
+  color: var(--text-low);
+  cursor: pointer;
+  font-size: var(--type-ui);
+  transition: color var(--dur-fast) var(--ease);
+}
+.tab:hover {
+  color: var(--text-mid);
+}
+.tab--active {
+  color: var(--text-hi);
+  font-weight: 500;
+}
+.tab--active::after {
+  content: '';
+  position: absolute;
+  left: var(--sp-2);
+  right: var(--sp-2);
+  bottom: -1px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+.tab__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+}
+
+.panel {
+  background: var(--bg-card);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-panel);
+}
+
+.status-strip {
+  display: flex;
+  width: 100%;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  background: var(--bg-inset);
+}
+.status-strip__seg {
+  height: 100%;
+  transition: flex-grow var(--dur-slow) var(--ease);
+}
+
+.status-spine {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  border-radius: var(--radius-pill);
+  transition: background var(--dur-slow) var(--ease);
+}
+
+.menu {
+  position: absolute;
+  z-index: var(--z-float);
+  min-width: 184px;
+  padding: var(--sp-1);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-panel);
+  background: var(--bg-chrome);
+  -webkit-backdrop-filter: var(--chrome-blur);
+  backdrop-filter: var(--chrome-blur);
+  box-shadow: var(--shadow-float);
+  animation: pop var(--dur-base) var(--ease);
+}
+.menu__item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  width: 100%;
+  min-height: 32px;
+  padding: 0 var(--sp-2);
+  border: none;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--text-hi);
+  cursor: pointer;
+  text-align: left;
+  font-size: var(--type-ui);
+}
+.menu__item:hover {
+  background: var(--accent);
+  color: #fff;
+}
+.menu__item:hover .kbd {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: transparent;
+  color: #fff;
+}
+.menu__item--danger {
+  color: var(--danger);
+}
+.menu__item--danger:hover {
+  background: var(--danger);
+  color: #fff;
+}
+.menu__sep {
+  height: 1px;
+  margin: var(--sp-1) 0;
+  background: var(--line-hair);
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 24, 35, 0.28);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  animation: fade var(--dur-base) var(--ease);
+}
+.modal {
+  width: min(640px, calc(100vw - var(--sp-6)));
+  max-height: calc(100vh - var(--sp-7));
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-float);
+  animation: rise var(--dur-base) var(--ease);
+}
+.modal__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border-bottom: 1px solid var(--line-hair);
+}
+.modal__title {
+  margin: 0;
+  font-size: var(--type-ui);
+  font-weight: 600;
+}
+.modal__body {
+  padding: var(--sp-4);
+  overflow: auto;
+}
+.modal__foot {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  border-top: 1px solid var(--line-hair);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/*
+ * Animates `transform`, so an element that is *positioned* by `transform` — the
+ * `left: 50%; translateX(-50%)` centring trick — cannot use this as-is: the
+ * keyframes replace the offset for the length of the animation and it lands with
+ * a sideways jump. Centre such an element with the `translate` longhand, which
+ * applies first and composes (see `.cg-selection`), or write a keyframe that
+ * carries the offset through (see `panel-centre`).
+ */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.input {
+  width: 100%;
+  min-height: 32px;
+  padding: 0 var(--sp-2);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  background: var(--bg-card);
+  color: var(--text-hi);
+}
+.input:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+.toaster {
+  position: fixed;
+  bottom: var(--sp-5);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-overlay);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  align-items: center;
+  pointer-events: none;
+}
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-pill);
+  background: var(--bg-chrome);
+  -webkit-backdrop-filter: var(--chrome-blur);
+  backdrop-filter: var(--chrome-blur);
+  box-shadow: var(--shadow-float);
+  color: var(--text-hi);
+  pointer-events: auto;
+  animation: rise var(--dur-base) var(--ease);
+}
+.toast__action {
+  border: none;
+  background: none;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+  font-weight: 500;
+}
+
+/*
+ * "Auto" and "Transparent" have no colour of their own, so they have to show
+ * what they mean rather than what they happen to render as. Both are drawn
+ * entirely in CSS; the component leaves their inline background unset.
+ */
+.cg-swatch--clear {
+  --swatch-check: linear-gradient(45deg, var(--dot-grid) 25%, transparent 25% 75%, var(--dot-grid) 75%);
+  background-color: var(--bg-card);
+}
+.cg-swatch--clear {
+  background-image: var(--swatch-check), var(--swatch-check);
+  background-size: 6px 6px;
+  background-position: 0 0, 3px 3px;
+}

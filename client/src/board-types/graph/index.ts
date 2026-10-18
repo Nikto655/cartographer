@@ -1,0 +1,1 @@
+export { graphBoardType } from './board';

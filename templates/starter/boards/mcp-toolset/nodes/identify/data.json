@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "snippets": [
+    {
+      "id": "s1",
+      "label": "resolved identity",
+      "lang": "json",
+      "code": "{ \"userId\": \"u_7f3a\", \"tokenId\": \"tok_04\", \"scope\": \"write\" }"
+    }
+  ],
+  "outSnippetId": "s1"
+}

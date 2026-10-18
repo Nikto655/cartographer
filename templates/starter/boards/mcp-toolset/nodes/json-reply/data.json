@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "snippets": [
+    {
+      "id": "s1",
+      "label": "reply",
+      "lang": "json",
+      "code": "[{ \"id\": \"payment-screen\", \"title\": \"Payment screen\" }]"
+    }
+  ],
+  "outSnippetId": "s1"
+}

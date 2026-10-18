@@ -1,0 +1,17 @@
+{
+  "folder": {
+    "name": "Cartographer Docs",
+    "color": "--node-sky"
+  },
+  "roots": [
+    "cartographer-architecture",
+    "cartographer-structure",
+    "cartographer-product-outline"
+  ],
+  "boards": [
+    "cartographer-architecture",
+    "mcp-toolset",
+    "cartographer-structure",
+    "cartographer-product-outline"
+  ]
+}

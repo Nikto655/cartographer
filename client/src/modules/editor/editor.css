@@ -1,0 +1,920 @@
+/* Dimming wash behind the centred panel — visual only, the canvas stays live. */
+.cg-editor__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-panel);
+  background: rgba(20, 24, 35, 0.16);
+  -webkit-backdrop-filter: blur(1.5px);
+  backdrop-filter: blur(1.5px);
+  pointer-events: none;
+  animation: fade var(--dur-base) var(--ease);
+}
+
+/* The panel floats over the canvas as a frosted card (§5.4). */
+.cg-editor {
+  position: absolute;
+  top: var(--chrome-inset);
+  right: var(--chrome-inset);
+  bottom: var(--chrome-inset);
+  z-index: var(--z-panel);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-chrome);
+  -webkit-backdrop-filter: var(--chrome-blur);
+  backdrop-filter: var(--chrome-blur);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-float);
+  overflow: hidden;
+  animation: slide-in var(--dur-base) var(--ease);
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(16px) scale(0.99);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Centred: a large working surface, still floating over the live canvas. */
+.cg-editor--centre {
+  top: 4vh;
+  bottom: 4vh;
+  left: 50%;
+  right: auto;
+  /* Grows with the window rather than sitting at a fixed column width. */
+  width: 92vw;
+  max-width: 1600px;
+  transform: translateX(-50%);
+  z-index: var(--z-overlay);
+  animation: panel-centre var(--dur-slow) var(--ease);
+}
+
+@keyframes panel-centre {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
+
+/* Roomier gutters, but the content itself fills the panel — no narrow column. */
+.cg-editor--centre .cg-editor__head,
+.cg-editor--centre .tabs,
+.cg-editor--centre .cg-notes-toolbar,
+.cg-editor--centre .cg-editor__foot,
+.cg-editor--centre .cg-overview,
+.cg-editor--centre .cg-data,
+.cg-editor--centre .cg-settings,
+.cg-editor--centre .cg-subboards,
+.cg-editor--centre .cg-editor__raw {
+  padding-left: var(--sp-5);
+  padding-right: var(--sp-5);
+}
+.cg-editor--centre .cg-overview,
+.cg-editor--centre .cg-data,
+.cg-editor--centre .cg-settings,
+.cg-editor--centre .cg-subboards {
+  max-width: none;
+  margin: 0;
+}
+.cg-editor--centre .cg-editor__prose,
+.cg-editor--centre .cg-notes__preview,
+.cg-editor--centre .cg-overview__notes {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+}
+
+.cg-editor__divider {
+  position: absolute;
+  left: -3px;
+  top: 0;
+  bottom: 0;
+  width: 7px;
+  cursor: col-resize;
+  z-index: 2;
+}
+.cg-editor__divider:hover {
+  background: linear-gradient(to right, transparent 40%, var(--accent-dim) 40%, var(--accent-dim) 60%, transparent 60%);
+}
+
+.cg-editor__head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-3) var(--sp-2);
+  border-bottom: 1px solid var(--line-hair);
+}
+.cg-editor__title {
+  font-size: 15px;
+  font-weight: 600;
+  cursor: text;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.cg-editor__title:hover {
+  background: var(--bg-inset);
+}
+.cg-editor__meta {
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+.cg-editor__tag-input {
+  width: 68px;
+  border: none;
+  background: none;
+  color: var(--text-mid);
+  font-size: var(--type-label);
+  outline: none;
+}
+.cg-editor__tag-input:focus {
+  color: var(--text-hi);
+  border-bottom: 1px solid var(--accent);
+}
+.cg-editor__created {
+  font-size: var(--type-label);
+  color: var(--text-low);
+}
+
+.cg-editor .tabs {
+  padding: 0 var(--sp-2);
+}
+
+.cg-editor__body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+.cg-editor__prose {
+  height: 100%;
+  padding: 0 var(--sp-3);
+  max-width: 72ch;
+}
+.cg-cm {
+  height: 100%;
+}
+.cg-editor__prose .cm-editor {
+  height: 100%;
+}
+
+.cg-editor__raw {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--sp-3);
+  gap: var(--sp-2);
+}
+.cg-editor__raw .cg-cm {
+  flex: 1;
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  background: var(--bg-inset);
+  overflow: hidden;
+}
+.cg-editor__raw-actions {
+  display: flex;
+  gap: var(--sp-2);
+}
+
+.cg-editor__foot {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border-top: 1px solid var(--line-hair);
+  font-size: var(--type-label);
+  color: var(--text-low);
+}
+.cg-save--saving {
+  color: var(--text-mid);
+}
+.cg-save--error {
+  color: var(--danger);
+}
+.cg-editor__path {
+  color: var(--text-low);
+}
+
+/* ---- data tab ---- */
+.cg-data {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-3);
+}
+.cg-data__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+.cg-data__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.cg-data__count {
+  color: var(--text-low);
+}
+.cg-data__editor {
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  background: var(--bg-inset);
+  overflow: hidden;
+}
+.cg-data__error {
+  margin: 0;
+  color: var(--danger);
+  font-size: var(--type-label);
+  font-family: var(--font-mono);
+}
+
+.cg-snippet {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-2);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  background: var(--bg-card);
+}
+.cg-snippet__head {
+  display: flex;
+  gap: var(--sp-2);
+}
+.cg-snippet__lang {
+  width: 68px;
+}
+
+/* ---- notes toolbar (§2) ---- */
+.cg-notes {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+.cg-notes-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: var(--sp-2) var(--sp-3);
+  border-bottom: 1px solid var(--line-hair);
+  flex: none;
+}
+.cg-notes-toolbar__group {
+  display: flex;
+  gap: 2px;
+}
+.cg-notes-toolbar__sep {
+  width: 1px;
+  height: 18px;
+  margin: 0 var(--sp-1);
+  background: var(--line-hair);
+}
+.cg-fmt {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-1);
+  min-width: 28px;
+  height: 28px;
+  padding: 0 var(--sp-1);
+  border: none;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--text-mid);
+  cursor: pointer;
+}
+.cg-fmt:hover:not(:disabled) {
+  background: var(--bg-inset);
+  color: var(--text-hi);
+}
+.cg-fmt:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.cg-fmt.is-active {
+  background: var(--accent);
+  color: #fff;
+}
+.cg-fmt--wide {
+  padding: 0 var(--sp-2);
+  font-size: var(--type-label);
+}
+.cg-heading-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: var(--z-float);
+  display: flex;
+  flex-direction: column;
+  min-width: 84px;
+  padding: var(--sp-1);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-float);
+}
+.cg-heading-menu button {
+  min-height: 28px;
+  padding: 0 var(--sp-2);
+  border: none;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--text-hi);
+  cursor: pointer;
+  text-align: left;
+  font-size: var(--type-ui);
+}
+.cg-heading-menu button:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ---- rendered markdown (preview + overview) ---- */
+.cg-preview {
+  font-size: var(--type-prose);
+  line-height: var(--leading-prose);
+  color: var(--text-hi);
+  overflow: auto;
+}
+.cg-preview > *:first-child {
+  margin-top: 0;
+}
+.cg-preview h1,
+.cg-preview h2,
+.cg-preview h3 {
+  font-size: 16px;
+  margin: var(--sp-4) 0 var(--sp-2);
+}
+.cg-preview code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--edge-data);
+}
+.cg-preview pre {
+  padding: var(--sp-3);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  background: var(--bg-inset);
+  overflow: auto;
+}
+.cg-preview pre code {
+  color: var(--text-hi);
+}
+.cg-preview blockquote {
+  margin: var(--sp-3) 0;
+  padding-left: var(--sp-3);
+  border-left: 2px solid var(--line-hair);
+  color: var(--text-mid);
+}
+.cg-preview ul,
+.cg-preview ol {
+  padding-left: var(--sp-5);
+}
+.cg-preview__empty {
+  color: var(--text-low);
+  font-style: italic;
+}
+
+/* ---- `[[node]]` links (v1.5 §4.2) ---- */
+.cg-wikilink {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-dim);
+  cursor: pointer;
+}
+.cg-wikilink:hover {
+  border-bottom-color: var(--accent);
+}
+/*
+ * A link to a sub-board rather than a node. It leaves the map you are reading,
+ * which a node link never does, so it says so with the same ↗ the sub-board list
+ * and the drill-down glyph use rather than looking identical to a jump within
+ * the board.
+ */
+.cg-wikilink--board::after {
+  content: '↗';
+  margin-left: 2px;
+  font-size: 0.85em;
+  vertical-align: baseline;
+}
+/* Unresolved is plain text with a hint, never an error. */
+.cg-wikilink.is-unresolved {
+  color: inherit;
+  cursor: default;
+  border-bottom: 1px dotted var(--text-low);
+}
+
+/*
+ * The `[[` popover — CodeMirror's own tooltip, wearing our chrome. The selectors
+ * are deliberately deep: CodeMirror's base theme is scoped to the editor class,
+ * so anything shallower loses to it.
+ */
+.cm-tooltip.cm-tooltip-autocomplete {
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  background: var(--bg-chrome);
+  backdrop-filter: var(--chrome-blur);
+  box-shadow: var(--shadow-float);
+  overflow: hidden;
+}
+.cm-editor .cm-tooltip.cm-tooltip-autocomplete > ul {
+  max-height: 220px;
+  font-family: var(--font-sans);
+  font-size: var(--type-ui);
+}
+.cm-editor .cm-tooltip.cm-tooltip-autocomplete > ul > li {
+  padding: var(--sp-1) var(--sp-3);
+  color: var(--text-hi);
+}
+.cm-editor .cm-tooltip.cm-tooltip-autocomplete > ul > li[aria-selected] {
+  background: var(--accent);
+  color: var(--bg-card);
+}
+/*
+ * The "Nodes" / "Sub-boards" headings.
+ *
+ * `completion-section` is a custom element CodeMirror creates itself — not an
+ * `li`, and it carries no class, so it inherits none of the row styling above
+ * and has to be named directly. Worth knowing before writing a selector for it:
+ * the obvious `li.cm-completionSection` matches nothing at all, silently.
+ */
+.cm-editor .cm-tooltip.cm-tooltip-autocomplete > ul > completion-section {
+  display: block;
+  padding: var(--sp-2) var(--sp-3) var(--sp-1);
+  border-top: 1px solid var(--line-hair);
+  font-size: var(--type-label);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-low);
+}
+.cm-editor .cm-tooltip.cm-tooltip-autocomplete > ul > completion-section:first-child {
+  border-top: none;
+}
+.cg-notes__preview {
+  flex: 1;
+  min-height: 0;
+  padding: var(--sp-3) var(--sp-4);
+  max-width: 72ch;
+}
+
+/* ---- overview tab (§4.1) ---- */
+.cg-overview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  padding: var(--sp-4) var(--sp-3);
+}
+.cg-overview__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+.cg-overview__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.cg-overview__head .label {
+  flex: 1;
+}
+.cg-overview__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  border: none;
+  background: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: var(--type-label);
+  padding: 0;
+}
+/* Frame membership: named under the title, in the frame's own colour. */
+.cg-editor__frame {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  align-self: flex-start;
+  max-width: 100%;
+  height: 20px;
+  margin: 2px 0 4px;
+  padding: 0 var(--sp-2);
+  border: none;
+  border-radius: var(--radius-pill);
+  color: var(--text-hi);
+  font-size: var(--type-label);
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: filter var(--dur-fast) var(--ease);
+}
+.cg-editor__frame:hover {
+  filter: brightness(0.96);
+}
+
+/* Description: a subtitle under the title until you click into it. */
+.cg-editor__description {
+  width: 100%;
+  padding: 3px var(--sp-1);
+  margin: -2px 0 2px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--text-mid);
+  font: inherit;
+  font-size: 12.5px;
+  line-height: 1.45;
+  resize: none;
+  overflow: hidden;
+  cursor: text;
+}
+.cg-editor__description::placeholder {
+  color: var(--text-low);
+}
+.cg-editor__description:hover {
+  background: var(--bg-inset);
+}
+.cg-editor__description.is-editing,
+.cg-editor__description:focus {
+  background: var(--bg-card);
+  border-color: var(--accent);
+  color: var(--text-hi);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.cg-overview__notes {
+  max-height: 38vh;
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  background: var(--bg-card);
+  cursor: text;
+  font-size: 14px;
+}
+.cg-overview__notes:hover {
+  border-color: var(--accent-dim);
+}
+.cg-overview__snippets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+.cg-snippet-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+  padding: var(--sp-1) var(--sp-2);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  background: var(--bg-card);
+}
+.cg-snippet-row.is-output {
+  border-color: var(--edge-data);
+}
+.cg-snippet-row__main {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+.cg-snippet-row__label {
+  font-weight: 500;
+  color: var(--text-hi);
+  white-space: nowrap;
+}
+.cg-snippet-row__lang,
+.cg-incoming__lang {
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-inset);
+  color: var(--text-mid);
+}
+.cg-snippet-row__preview {
+  flex: 1;
+  min-width: 0;
+  font-size: 11px;
+  color: var(--text-low);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---- snippets + incoming (§4.3) ---- */
+.cg-output-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  height: 22px;
+  padding: 0 var(--sp-2);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  color: var(--text-low);
+  cursor: pointer;
+  font-size: 10px;
+  white-space: nowrap;
+}
+.cg-output-toggle:hover {
+  color: var(--edge-data);
+  border-color: var(--edge-data);
+}
+.cg-output-toggle.is-on {
+  background: var(--edge-data);
+  border-color: var(--edge-data);
+  color: #fff;
+}
+.cg-snippet.is-output {
+  border-color: var(--edge-data);
+}
+.cg-snippet__caret,
+.cg-snippet__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--text-low);
+  cursor: pointer;
+  flex: none;
+}
+.cg-snippet__caret:hover,
+.cg-snippet__remove:hover {
+  background: var(--bg-inset);
+  color: var(--text-hi);
+}
+.cg-snippet__remove:hover {
+  color: var(--danger);
+}
+.cg-snippet__label {
+  flex: 1;
+  min-width: 60px;
+}
+.cg-snippet__lang {
+  width: 74px;
+  padding: 0 var(--sp-1);
+}
+.cg-data__empty {
+  margin: 0;
+  font-size: var(--type-label);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.cg-incoming {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  background: var(--bg-card);
+}
+.cg-incoming__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-1) var(--sp-2);
+  min-width: 0;
+}
+.cg-incoming__source {
+  border: none;
+  background: none;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+  font-size: var(--type-ui);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cg-incoming__arrow {
+  color: var(--edge-data);
+}
+.cg-incoming__label {
+  flex: 1;
+  min-width: 0;
+  color: var(--text-hi);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cg-incoming__code {
+  margin: 0;
+  padding: var(--sp-2) var(--sp-3);
+  border-top: 1px solid var(--line-hair);
+  background: var(--bg-inset);
+  color: var(--text-mid);
+  font-size: 12px;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+/*
+ * The expanded incoming payload. Its own class rather than reusing
+ * `__code` above, which is still a `<pre>` on the Overview tab's snippet rows —
+ * these two look alike and are not the same element.
+ */
+.cg-incoming__view {
+  border-top: 1px solid var(--line-hair);
+  background: var(--bg-inset);
+  /* Tall payloads scroll here instead of pushing the panel's own scroll. */
+  max-height: 260px;
+  overflow: auto;
+}
+
+/* ---- settings tab (§4.4) ---- */
+.cg-settings {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  padding: var(--sp-4) var(--sp-3);
+}
+.cg-settings__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+.cg-settings__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  min-height: 32px;
+  color: var(--text-hi);
+}
+.cg-settings__row.is-disabled {
+  color: var(--text-low);
+}
+.cg-settings__segmented {
+  display: flex;
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  overflow: hidden;
+}
+.cg-settings__segmented button {
+  min-height: 28px;
+  padding: 0 var(--sp-2);
+  border: none;
+  background: var(--bg-card);
+  color: var(--text-mid);
+  cursor: pointer;
+  font-size: var(--type-label);
+}
+.cg-settings__segmented button + button {
+  border-left: 1px solid var(--line-hair);
+}
+.cg-settings__segmented button.is-active {
+  background: var(--accent);
+  color: #fff;
+}
+.cg-settings__swatches {
+  display: flex;
+  gap: var(--sp-1);
+}
+.cg-settings__facts {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  font-size: var(--type-label);
+}
+.cg-settings__facts > div {
+  display: flex;
+  gap: var(--sp-2);
+}
+.cg-settings__facts dt {
+  width: 56px;
+  color: var(--text-low);
+  flex: none;
+}
+.cg-settings__facts dd {
+  margin: 0;
+  color: var(--text-mid);
+  overflow-wrap: anywhere;
+}
+.cg-settings__danger {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  justify-content: space-between;
+  font-size: var(--type-label);
+}
+
+.cg-settings__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+/* ---- sub-boards tab ---- */
+.cg-subboards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-3);
+}
+.cg-subboards__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+.cg-subboards__list--picker {
+  margin-top: var(--sp-3);
+  max-height: 46vh;
+  overflow: auto;
+}
+.cg-subboard {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: var(--sp-2);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  background: var(--bg-card);
+}
+.cg-subboard:hover {
+  border-color: var(--accent-dim);
+}
+.cg-subboard__main {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+.cg-subboard__name {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-weight: 500;
+  color: var(--text-hi);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Which world this board is, quietly — the name still leads the row. */
+.cg-subboard__world {
+  display: inline-flex;
+  flex: none;
+  color: var(--text-low);
+}
+.cg-subboard__meta {
+  font-size: var(--type-label);
+  color: var(--text-low);
+}
+.cg-subboard__strip {
+  display: block;
+  max-width: 140px;
+  margin-top: 2px;
+}
+.cg-subboard__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--text-low);
+  cursor: pointer;
+  flex: none;
+}
+.cg-subboard__action:hover {
+  background: var(--bg-inset);
+  color: var(--text-hi);
+}
+.cg-subboard__action--danger:hover {
+  background: var(--danger);
+  color: #fff;
+}

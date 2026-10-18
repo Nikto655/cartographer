@@ -1,0 +1,169 @@
+/* §5.1 — all chrome floats over an edge-to-edge canvas. */
+.chrome-layer {
+  position: absolute;
+  inset: var(--chrome-inset);
+  z-index: var(--z-chrome);
+  pointer-events: none;
+}
+
+.chrome-top-left {
+  position: absolute;
+  top: var(--conflict-height, 0px);
+  left: 0;
+}
+.chrome-top-center {
+  position: absolute;
+  top: var(--conflict-height, 0px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.chrome-top-right {
+  position: absolute;
+  top: var(--conflict-height, 0px);
+  right: 0;
+}
+.chrome-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.chrome-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+/* Breadcrumbs fold into the top-left pill. */
+.crumb-pill {
+  max-width: min(46vw, 620px);
+}
+.crumb-pill__trail {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+}
+.crumb {
+  border: none;
+  background: none;
+  color: var(--text-mid);
+  cursor: pointer;
+  padding: 3px var(--sp-1);
+  border-radius: var(--radius-control);
+  font-size: var(--type-ui);
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.crumb:hover {
+  color: var(--text-hi);
+  background: var(--bg-inset);
+}
+.crumb__sep {
+  color: var(--text-low);
+  font-size: var(--type-ui);
+}
+.crumb--current {
+  color: var(--text-hi);
+  font-weight: 600;
+  padding: 3px var(--sp-1);
+  border-radius: var(--radius-control);
+  cursor: text;
+}
+.crumb--current:hover {
+  background: var(--bg-inset);
+}
+
+.save-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0 var(--sp-2);
+  font-size: var(--type-label);
+  color: var(--text-low);
+  white-space: nowrap;
+}
+.save-dot__mark {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--status-built);
+  flex: none;
+  transition: background var(--dur-base) var(--ease);
+}
+.save-dot--saving .save-dot__mark,
+.save-dot--dirty .save-dot__mark {
+  background: var(--text-low);
+}
+.save-dot--error {
+  color: var(--danger);
+}
+.save-dot--error .save-dot__mark {
+  background: var(--danger);
+}
+
+.chrome-menu-label {
+  padding: var(--sp-2) var(--sp-2) var(--sp-1);
+}
+.chrome-menu-empty {
+  padding: 0 var(--sp-2) var(--sp-2);
+  font-size: var(--type-label);
+}
+
+/* Tooltips on the bottom pills open upward, not off the edge of the window. */
+.chrome-bottom-left .tooltip,
+.chrome-bottom-right .tooltip {
+  top: auto;
+  bottom: calc(100% + 8px);
+}
+
+/* The board asked for a world we don't have yet — shown as a map, said quietly (§1). */
+.crumb__fallback {
+  margin-left: var(--sp-2);
+  padding: 1px var(--sp-2);
+  border-radius: var(--radius-pill);
+  background: var(--bg-inset);
+  color: var(--text-low);
+  font-size: 10.5px;
+}
+
+/*
+ * Read-only viewing (v1.6 §5). It says what is missing rather than shouting:
+ * the point is that the board reads exactly as it always does.
+ */
+.save-dot--readonly {
+  color: var(--text-low);
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+}
+
+
+/*
+ * The stale-write warning. Fixed under the top chrome and full width, because it
+ * has to be seen without being looked for — and `pointer-events: none` so it can
+ * never sit between the person and the nodes they are trying to rescue.
+ */
+.cg-conflict {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-overlay);
+  padding: var(--sp-3) var(--sp-6);
+  border-bottom: 1px solid var(--danger);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-float);
+  color: var(--text-hi);
+  font-size: var(--type-ui);
+  line-height: 1.5;
+  pointer-events: none;
+}
+.cg-conflict__title {
+  color: var(--danger);
+}
+.cg-conflict__list {
+  margin: var(--sp-2) 0 var(--sp-2);
+  padding-left: var(--sp-4);
+}
+

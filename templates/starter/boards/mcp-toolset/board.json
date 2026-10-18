@@ -1,0 +1,837 @@
+{
+  "id": "mcp-toolset",
+  "name": "MCP toolset",
+  "boardType": "map",
+  "parentBoard": "cartographer-architecture",
+  "parentNode": "modules-mcp",
+  "nodes": [
+    {
+      "id": "list-boards",
+      "type": "classic",
+      "title": "list_boards",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq144-2wdud",
+      "variant": "chip"
+    },
+    {
+      "id": "get-board",
+      "type": "classic",
+      "title": "get_board",
+      "position": {
+        "x": 210,
+        "y": 0
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq144-2wdud",
+      "variant": "chip"
+    },
+    {
+      "id": "read-node",
+      "type": "classic",
+      "title": "read_node",
+      "position": {
+        "x": 420,
+        "y": 0
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq144-2wdud",
+      "variant": "chip"
+    },
+    {
+      "id": "search-nodes",
+      "type": "classic",
+      "title": "search_nodes",
+      "position": {
+        "x": 630,
+        "y": 0
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq144-2wdud",
+      "variant": "chip"
+    },
+    {
+      "id": "export-board",
+      "type": "classic",
+      "title": "export_board",
+      "position": {
+        "x": 0,
+        "y": 100
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq144-2wdud",
+      "variant": "chip"
+    },
+    {
+      "id": "get-config",
+      "type": "classic",
+      "title": "get_config",
+      "position": {
+        "x": 210,
+        "y": 100
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq144-2wdud",
+      "variant": "chip"
+    },
+    {
+      "id": "list-folders",
+      "type": "classic",
+      "title": "list_folders",
+      "position": {
+        "x": 420,
+        "y": 100
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq144-2wdud",
+      "variant": "chip"
+    },
+    {
+      "id": "create-board",
+      "type": "classic",
+      "title": "create_board",
+      "position": {
+        "x": 0,
+        "y": 330
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "create-nodes",
+      "type": "classic",
+      "title": "create_nodes",
+      "position": {
+        "x": 210,
+        "y": 330
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "create-texts",
+      "type": "classic",
+      "title": "create_texts",
+      "position": {
+        "x": 420,
+        "y": 330
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "create-frame",
+      "type": "classic",
+      "title": "create_frame",
+      "position": {
+        "x": 630,
+        "y": 330
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "create-folder",
+      "type": "classic",
+      "title": "create_folder",
+      "position": {
+        "x": 0,
+        "y": 430
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "link-nodes",
+      "type": "classic",
+      "title": "link_nodes",
+      "position": {
+        "x": 210,
+        "y": 430
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "unlink-nodes",
+      "type": "classic",
+      "title": "unlink_nodes",
+      "position": {
+        "x": 420,
+        "y": 430
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "update-edge",
+      "type": "classic",
+      "title": "update_edge",
+      "position": {
+        "x": 630,
+        "y": 430
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "update-node",
+      "type": "classic",
+      "title": "update_node",
+      "position": {
+        "x": 0,
+        "y": 530
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "update-text",
+      "type": "classic",
+      "title": "update_text",
+      "position": {
+        "x": 210,
+        "y": 530
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "update-frame",
+      "type": "classic",
+      "title": "update_frame",
+      "position": {
+        "x": 420,
+        "y": 530
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "update-folder",
+      "type": "classic",
+      "title": "update_folder",
+      "position": {
+        "x": 630,
+        "y": 530
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "remove-texts",
+      "type": "classic",
+      "title": "remove_texts",
+      "position": {
+        "x": 0,
+        "y": 630
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "move-nodes",
+      "type": "classic",
+      "title": "move_nodes",
+      "position": {
+        "x": 210,
+        "y": 630
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "move-to-frame",
+      "type": "classic",
+      "title": "move_to_frame",
+      "position": {
+        "x": 420,
+        "y": 630
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "set-node-data",
+      "type": "classic",
+      "title": "set_node_data",
+      "position": {
+        "x": 630,
+        "y": 630
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "style-nodes",
+      "type": "classic",
+      "title": "style_nodes",
+      "position": {
+        "x": 0,
+        "y": 730
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "file-boards",
+      "type": "classic",
+      "title": "file_boards",
+      "position": {
+        "x": 210,
+        "y": 730
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T00:52:31.120Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "arrange-nodes",
+      "type": "classic",
+      "title": "arrange_nodes",
+      "position": {
+        "x": 420,
+        "y": 730
+      },
+      "size": {
+        "width": 190,
+        "height": 56
+      },
+      "shape": "rect",
+      "status": "built",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-10-18T12:00:00.000Z"
+      },
+      "frameId": "frame-ms9nq2le-2xsa9",
+      "variant": "chip"
+    },
+    {
+      "id": "an-agent-calls",
+      "type": "classic",
+      "title": "An agent calls",
+      "position": {
+        "x": 1000,
+        "y": 0
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rounded",
+      "status": "built",
+      "color": "--node-paper",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T01:02:40.670Z"
+      },
+      "frameId": "frame-ms9o3332-1mmf"
+    },
+    {
+      "id": "identify",
+      "type": "classic",
+      "title": "identify",
+      "position": {
+        "x": 1000,
+        "y": 140
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rounded",
+      "status": "built",
+      "color": "--node-paper",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T01:02:40.670Z"
+      },
+      "frameId": "frame-ms9o3332-1mmf"
+    },
+    {
+      "id": "session-check",
+      "type": "classic",
+      "title": "No session",
+      "position": {
+        "x": 1000,
+        "y": 280
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rounded",
+      "status": "built",
+      "color": "--node-paper",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T01:02:40.670Z"
+      },
+      "frameId": "frame-ms9o3332-1mmf"
+    },
+    {
+      "id": "tool-dispatch",
+      "type": "classic",
+      "title": "Tool dispatch",
+      "position": {
+        "x": 1000,
+        "y": 420
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rounded",
+      "status": "built",
+      "color": "--node-paper",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T01:02:40.670Z"
+      },
+      "frameId": "frame-ms9o3332-1mmf"
+    },
+    {
+      "id": "first-write-snapshot",
+      "type": "classic",
+      "title": "First write? snapshot",
+      "position": {
+        "x": 1000,
+        "y": 560
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rounded",
+      "status": "built",
+      "color": "--node-paper",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T01:02:40.670Z"
+      },
+      "frameId": "frame-ms9o3332-1mmf"
+    },
+    {
+      "id": "the-service-call",
+      "type": "classic",
+      "title": "The service call",
+      "position": {
+        "x": 1000,
+        "y": 700
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rounded",
+      "status": "built",
+      "color": "--node-paper",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T01:02:40.670Z"
+      },
+      "frameId": "frame-ms9o3332-1mmf"
+    },
+    {
+      "id": "json-reply",
+      "type": "classic",
+      "title": "JSON reply",
+      "position": {
+        "x": 1000,
+        "y": 840
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rounded",
+      "status": "built",
+      "color": "--node-paper",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-08-01T01:02:40.670Z"
+      },
+      "frameId": "frame-ms9o3332-1mmf"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-ms9o34ph-2tgb",
+      "source": "an-agent-calls",
+      "target": "identify",
+      "label": "Bearer cart_…"
+    },
+    {
+      "id": "edge-ms9o34ph-3j0x",
+      "source": "identify",
+      "target": "session-check",
+      "label": "identity resolved"
+    },
+    {
+      "id": "edge-ms9o34ph-4by2",
+      "source": "session-check",
+      "target": "tool-dispatch",
+      "label": "per request ✓"
+    },
+    {
+      "id": "edge-ms9o34ph-5zhh",
+      "source": "tool-dispatch",
+      "target": "first-write-snapshot",
+      "label": "write tools only"
+    },
+    {
+      "id": "edge-ms9o34ph-6git",
+      "source": "first-write-snapshot",
+      "target": "the-service-call"
+    },
+    {
+      "id": "edge-ms9o34ph-7il9",
+      "source": "the-service-call",
+      "target": "json-reply",
+      "label": "under the board lock"
+    }
+  ],
+  "frames": [
+    {
+      "id": "frame-ms9nq144-2wdud",
+      "title": "Read — seven tools",
+      "position": {
+        "x": -44,
+        "y": -72
+      },
+      "size": {
+        "width": 908,
+        "height": 272
+      },
+      "color": "--node-sky"
+    },
+    {
+      "id": "frame-ms9nq2le-2xsa9",
+      "title": "Write — nineteen tools, none destructive",
+      "position": {
+        "x": -44,
+        "y": 258
+      },
+      "size": {
+        "width": 908,
+        "height": 572
+      },
+      "color": "--node-mint"
+    },
+    {
+      "id": "frame-ms9o3332-1mmf",
+      "title": "A tool call, end to end",
+      "position": {
+        "x": 956,
+        "y": -72
+      },
+      "size": {
+        "width": 272,
+        "height": 1032
+      },
+      "color": "--node-lilac"
+    }
+  ],
+  "texts": [
+    {
+      "id": "text-ms9nq5yy-2yzyk",
+      "text": "The MCP toolset — 26 tools",
+      "position": {
+        "x": -44,
+        "y": -220
+      },
+      "size": "lg",
+      "bold": true
+    },
+    {
+      "id": "text-ms9nq5yy-2z039",
+      "text": "Left: the 26 tools, seven read and nineteen write — none destructive. Right: one call followed end to end, from bearer token to the JSON reply. Every tool shapes arguments, calls the same service function a REST route calls, and returns JSON; agents create and refine, people destroy and share.",
+      "position": {
+        "x": -44,
+        "y": -170
+      },
+      "size": "sm",
+      "italic": true
+    }
+  ],
+  "createdAt": "2026-08-01T00:52:13.618Z",
+  "updatedAt": "2026-08-01T01:10:15.586Z"
+}

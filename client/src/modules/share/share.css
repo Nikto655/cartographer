@@ -1,0 +1,159 @@
+/*
+ * Sharing (v1.6 §5). Nothing new to look at: the dialog borrows the admin
+ * panel's row rhythm and the shelf borrows the dashboard's card, because a board
+ * somebody shared with you is still a board.
+ */
+
+/* ---- dialog ---- */
+.cg-share__note {
+  margin: 0 0 var(--sp-4);
+  font-size: var(--type-label);
+  line-height: 1.5;
+  color: var(--text-mid);
+}
+
+.cg-share__section {
+  margin: var(--sp-4) 0 var(--sp-2);
+}
+.cg-share__section:first-of-type {
+  margin-top: 0;
+}
+
+.cg-share__empty {
+  margin: 0;
+  font-size: var(--type-label);
+}
+
+.cg-share__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-3);
+  padding: var(--sp-2) 0;
+  border-bottom: 1px solid var(--line-hair);
+}
+/* Revoke sits at the far right of the name line. */
+.cg-share__row > .btn {
+  margin-left: auto;
+}
+.cg-share__row:last-of-type {
+  border-bottom: none;
+}
+
+.cg-share__who {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+.cg-share__name {
+  font-size: var(--type-ui);
+  font-weight: 500;
+  color: var(--text-hi);
+}
+.cg-share__who .mono {
+  font-size: var(--type-label);
+}
+/* Between the name and Revoke: quiet, and never the reason the row wraps. */
+.cg-share__seen {
+  font-size: var(--type-label);
+  white-space: nowrap;
+}
+
+/* Two toggles need their own line, or the name gets squeezed out of a 420px row. */
+.cg-share__opts {
+  display: flex;
+  flex-basis: 100%;
+  gap: var(--sp-4);
+  padding-left: 1px;
+}
+/* Each permission reads as a sentence, not a setting. */
+.cg-share__opt {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: var(--type-label);
+  color: var(--text-mid);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.cg-share__search {
+  width: 100%;
+}
+
+.cg-share__candidates {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--sp-2);
+  max-height: 190px;
+  overflow: auto;
+}
+.cg-share__candidate {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  width: 100%;
+  padding: var(--sp-2);
+  border: none;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--text-mid);
+  text-align: left;
+  cursor: pointer;
+}
+.cg-share__candidate:hover {
+  background: var(--bg-inset);
+}
+.cg-share__candidate svg {
+  opacity: 0;
+  color: var(--accent);
+}
+.cg-share__candidate:hover svg {
+  opacity: 1;
+}
+.cg-share__candidate .mono {
+  font-size: var(--type-label);
+}
+
+/* ---- shelf ---- */
+.cg-shared {
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--line-hair);
+}
+/* The dashboard's section layout draws the dividers; a built-in one doubles up. */
+.cg-shared--bare {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.cg-shared__title {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin: 0 0 var(--sp-4);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-hi);
+}
+.cg-shared__title svg {
+  color: var(--text-low);
+}
+/* The one mark that separates a shared card from an owned one. */
+.cg-shared__owner {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  /* 24px matches the actions button an owned card puts in this slot, so both
+     kinds of card come out exactly the same height. */
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-size: var(--type-label);
+  font-weight: 600;
+  line-height: 1;
+}

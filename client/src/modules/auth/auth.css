@@ -1,0 +1,112 @@
+/* The only unauthenticated page — same paper, same pill, nothing extra (§8.2). */
+.cg-auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: var(--sp-5);
+}
+
+.cg-auth__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  width: 340px;
+  padding: var(--sp-6);
+  box-shadow: var(--shadow-float);
+}
+
+.cg-auth__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.cg-auth__wordmark {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-hi);
+}
+
+.cg-auth__title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.cg-auth__hint {
+  margin: 0;
+  color: var(--text-mid);
+}
+
+.cg-auth__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.cg-auth__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.cg-auth__error {
+  margin: 0;
+  color: var(--danger);
+}
+
+.cg-auth__submit {
+  min-height: 36px;
+  margin-top: var(--sp-1);
+}
+
+.cg-auth__link {
+  align-self: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-low);
+  cursor: pointer;
+}
+.cg-auth__link:hover {
+  color: var(--text-mid);
+}
+
+/* ---- profile menu ---- */
+.cg-profile {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 32px;
+  padding: 0 var(--sp-2) 0 var(--sp-1);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.cg-profile:hover {
+  background: var(--bg-inset);
+  color: var(--text-hi);
+}
+
+.cg-profile__mark {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-size: var(--type-label);
+  font-weight: 600;
+}
+
+.cg-profile__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+}

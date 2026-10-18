@@ -1,0 +1,269 @@
+/* API & Agents (v1.7 §2.2) — one dialog: how to connect, then what is connected. */
+.cg-tokens__intro {
+  margin: 0 0 var(--sp-4);
+  font-size: var(--type-ui);
+  line-height: 1.5;
+  color: var(--text-mid);
+}
+
+/* ---- connect: endpoint, client tabs, one snippet ---- */
+.cg-tokens__connect {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-card);
+  background: var(--bg-inset);
+}
+.cg-tokens__endpoint-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.cg-tokens__url {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--type-ui);
+  color: var(--text-hi);
+}
+
+/* One row of clients. They scroll rather than wrap: a tab strip that reflows to
+   two lines reads as two groups. */
+.cg-tokens__tabs {
+  display: flex;
+  gap: var(--sp-1);
+  overflow-x: auto;
+  border-bottom: 1px solid var(--line-hair);
+  padding-bottom: var(--sp-1);
+}
+.cg-tokens__tab {
+  border: none;
+  background: none;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 3px var(--sp-2);
+  border-radius: var(--radius-control);
+  font-size: var(--type-ui);
+  color: var(--text-mid);
+}
+.cg-tokens__tab:hover {
+  background: var(--bg-card);
+  color: var(--text-hi);
+}
+.cg-tokens__tab.is-active {
+  background: var(--bg-card);
+  color: var(--text-hi);
+  font-weight: 600;
+}
+
+.cg-tokens__where {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin: 0;
+  font-size: var(--type-label);
+  color: var(--text-mid);
+}
+/* Which of the two ways in this client uses — the one thing that decides
+   whether Node has to be on the machine. */
+.cg-tokens__badge {
+  flex: none;
+  padding: 1px 6px;
+  border-radius: var(--radius-control);
+  font-size: var(--type-label);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.cg-tokens__badge--direct {
+  background: var(--node-sky-soft, var(--bg-card));
+  color: var(--text-hi);
+}
+.cg-tokens__badge--bridge {
+  background: var(--bg-card);
+  color: var(--text-mid);
+}
+
+/* Long, and often longer than the dialog: it scrolls sideways rather than
+   wrapping, because a wrapped command is one you cannot copy correctly by eye. */
+.cg-tokens__snippet {
+  margin: 0;
+  padding: var(--sp-2);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  background: var(--bg-card);
+  font-size: var(--type-label);
+  line-height: 1.55;
+  color: var(--text-hi);
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.cg-tokens__snippet-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+.cg-tokens__then {
+  margin: 0;
+  font-size: var(--type-label);
+  line-height: 1.5;
+  color: var(--text-mid);
+}
+
+.cg-tokens__hint {
+  margin: 0;
+  font-size: var(--type-label);
+  line-height: 1.45;
+  color: var(--text-mid);
+}
+
+/* ---- new token: what to call it, then what it may do ---- */
+.cg-tokens__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin-top: var(--sp-4);
+}
+.cg-tokens__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+/*
+ * Two alternatives, side by side and the same size. Stacked they read as a list
+ * whose second item is an afterthought, and the choice between reading and
+ * writing somebody's whole workspace is not an afterthought.
+ */
+.cg-tokens__scopes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+}
+.cg-tokens__scope {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+.cg-tokens__scope:hover {
+  border-color: var(--accent-dim);
+}
+.cg-tokens__scope--on {
+  border-color: var(--accent);
+  background: var(--bg-inset);
+}
+/* The radio stays a radio: it is the thing screen readers and keyboards drive,
+   and the card around it is only a bigger target for the same control. */
+.cg-tokens__scope input {
+  flex: none;
+  margin: 2px 0 0;
+  accent-color: var(--accent);
+}
+.cg-tokens__scope-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.cg-tokens__scope-label {
+  font-size: var(--type-ui);
+  font-weight: 600;
+  color: var(--text-hi);
+}
+/* Wide enough to say what it does; never wide enough to push the pair uneven. */
+.cg-tokens__scope .cg-tokens__hint {
+  overflow-wrap: anywhere;
+}
+
+.cg-tokens__submit {
+  align-self: flex-start;
+}
+
+/* ---- the one-time secret: shown once, so it has to be unmistakable ---- */
+.cg-tokens__secret-panel {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--sp-4);
+}
+.cg-tokens__secret-intro {
+  margin: 0 0 var(--sp-3);
+  font-size: var(--type-ui);
+  color: var(--text-mid);
+}
+.cg-tokens__secret {
+  padding: var(--sp-3);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  background: var(--bg-inset);
+  color: var(--text-hi);
+  font-size: var(--type-ui);
+  line-height: 1.5;
+  text-align: center;
+  overflow-wrap: anywhere;
+  user-select: all;
+  margin-bottom: var(--sp-3);
+}
+.cg-tokens__copy {
+  width: 100%;
+}
+.cg-tokens__warning {
+  margin: var(--sp-3) 0;
+  font-size: var(--type-label);
+  line-height: 1.45;
+  color: var(--danger);
+}
+
+/* ---- token list ---- */
+.cg-tokens__empty {
+  padding: var(--sp-4) 0 0;
+}
+.cg-tokens__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  margin-top: var(--sp-5);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--line-hair);
+}
+.cg-tokens__row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2);
+  border-radius: var(--radius-control);
+}
+.cg-tokens__row:hover {
+  background: var(--bg-inset);
+}
+/*
+ * The name takes the room and the timestamps give way. Both cannot fit at 520px
+ * and only one of them identifies the token you are about to revoke — "Claude …"
+ * next to a legible "used just now" is the wrong half to keep.
+ */
+.cg-tokens__name {
+  flex: 1 1 auto;
+  min-width: 8rem;
+  font-size: var(--type-ui);
+  font-weight: 500;
+  color: var(--text-hi);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cg-tokens__meta {
+  flex: 0 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

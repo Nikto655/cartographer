@@ -1,0 +1,1027 @@
+{
+  "id": "cartographer-product-outline",
+  "name": "Cartographer Product Outline",
+  "boardType": "map",
+  "nodes": [
+    {
+      "id": "files-are-the-database",
+      "type": "classic",
+      "title": "Files are the database",
+      "position": {
+        "x": -24,
+        "y": 96
+      },
+      "size": {
+        "width": 192,
+        "height": 100
+      },
+      "shape": "rect",
+      "status": "documented",
+      "color": "--node-paper",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:08.409Z"
+      },
+      "frameId": "frame-ms9jh97k-1snef"
+    },
+    {
+      "id": "serialized-writes",
+      "type": "classic",
+      "title": "Serialized writes",
+      "position": {
+        "x": 420,
+        "y": 0
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:08.409Z"
+      },
+      "frameId": "frame-ms9jh97k-1snef"
+    },
+    {
+      "id": "a-board-is-a-directory",
+      "type": "classic",
+      "title": "A board is a directory",
+      "position": {
+        "x": 420,
+        "y": 110
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:08.409Z"
+      },
+      "frameId": "frame-ms9jh97k-1snef"
+    },
+    {
+      "id": "ids-are-slugs",
+      "type": "classic",
+      "title": "Ids are slugs",
+      "position": {
+        "x": 416,
+        "y": 240
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:08.409Z"
+      },
+      "frameId": "frame-ms9jh97k-1snef"
+    },
+    {
+      "id": "boards-of-linked-nodes",
+      "type": "classic",
+      "title": "Boards of linked nodes",
+      "position": {
+        "x": -36,
+        "y": 590
+      },
+      "size": {
+        "width": 184,
+        "height": 100
+      },
+      "shape": "rect",
+      "status": "documented",
+      "color": "--node-paper",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:08.409Z"
+      },
+      "frameId": "frame-ms9jhafu-1t8nt"
+    },
+    {
+      "id": "map-world",
+      "type": "classic",
+      "title": "Map world",
+      "position": {
+        "x": 408,
+        "y": 480
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:08.409Z"
+      },
+      "frameId": "frame-ms9jhafu-1t8nt"
+    },
+    {
+      "id": "graph-world",
+      "type": "classic",
+      "title": "Graph world",
+      "position": {
+        "x": 416,
+        "y": 720
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:08.409Z"
+      },
+      "frameId": "frame-ms9jhafu-1t8nt"
+    },
+    {
+      "id": "canvas-annotations",
+      "type": "classic",
+      "title": "Canvas annotations",
+      "position": {
+        "x": 408,
+        "y": 600
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:08.409Z"
+      },
+      "frameId": "frame-ms9jhafu-1t8nt"
+    },
+    {
+      "id": "frames",
+      "type": "classic",
+      "title": "Frames",
+      "position": {
+        "x": 708,
+        "y": 480
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:08.409Z"
+      },
+      "frameId": "frame-ms9jhafu-1t8nt"
+    },
+    {
+      "id": "sub-boards",
+      "type": "classic",
+      "title": "Sub-boards",
+      "position": {
+        "x": 1008,
+        "y": 480
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:08.409Z"
+      },
+      "frameId": "frame-ms9jhafu-1t8nt"
+    },
+    {
+      "id": "node-notes",
+      "type": "classic",
+      "title": "Node notes",
+      "position": {
+        "x": -24,
+        "y": 1200
+      },
+      "size": {
+        "width": 184,
+        "height": 100
+      },
+      "shape": "rect",
+      "status": "documented",
+      "color": "--node-paper",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:08.409Z"
+      },
+      "frameId": "frame-ms9jhcpm-1umr4"
+    },
+    {
+      "id": "coverage",
+      "type": "classic",
+      "title": "Coverage",
+      "position": {
+        "x": 416,
+        "y": 1088
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:08.409Z"
+      },
+      "frameId": "frame-ms9jhcpm-1umr4"
+    },
+    {
+      "id": "wiki-links",
+      "type": "classic",
+      "title": "Wiki-links",
+      "position": {
+        "x": 416,
+        "y": 960
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:08.409Z"
+      },
+      "frameId": "frame-ms9jhcpm-1umr4"
+    },
+    {
+      "id": "data-snippets",
+      "type": "classic",
+      "title": "Data snippets",
+      "position": {
+        "x": 420,
+        "y": 1200
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:08.409Z"
+      },
+      "frameId": "frame-ms9jhcpm-1umr4"
+    },
+    {
+      "id": "status",
+      "type": "classic",
+      "title": "Status",
+      "position": {
+        "x": 420,
+        "y": 1310
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:08.409Z"
+      },
+      "frameId": "frame-ms9jhcpm-1umr4"
+    },
+    {
+      "id": "export",
+      "type": "classic",
+      "title": "Export",
+      "position": {
+        "x": 420,
+        "y": 1420
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:08.409Z"
+      },
+      "frameId": "frame-ms9jhcpm-1umr4"
+    },
+    {
+      "id": "the-dashboard",
+      "type": "classic",
+      "title": "The dashboard",
+      "position": {
+        "x": -24,
+        "y": 1715
+      },
+      "size": {
+        "width": 184,
+        "height": 100
+      },
+      "shape": "rect",
+      "status": "documented",
+      "color": "--node-paper",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhe3q-1vw11"
+    },
+    {
+      "id": "folders-and-favourites",
+      "type": "classic",
+      "title": "Folders and favourites",
+      "position": {
+        "x": 424,
+        "y": 1664
+      },
+      "size": {
+        "width": 184,
+        "height": 84
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhe3q-1vw11"
+    },
+    {
+      "id": "search",
+      "type": "classic",
+      "title": "Search",
+      "position": {
+        "x": 424,
+        "y": 1768
+      },
+      "size": {
+        "width": 184,
+        "height": 100
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhe3q-1vw11"
+    },
+    {
+      "id": "accounts-and-workspaces",
+      "type": "classic",
+      "title": "Accounts and workspaces",
+      "position": {
+        "x": -24,
+        "y": 2065
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "color": "--node-paper",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhfm9-1wfpe"
+    },
+    {
+      "id": "sharing",
+      "type": "classic",
+      "title": "Sharing",
+      "position": {
+        "x": 420,
+        "y": 2010
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhfm9-1wfpe"
+    },
+    {
+      "id": "duplicate-to-workspace",
+      "type": "classic",
+      "title": "Duplicate to workspace",
+      "position": {
+        "x": 720,
+        "y": 2010
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhfm9-1wfpe"
+    },
+    {
+      "id": "admin-view",
+      "type": "classic",
+      "title": "Admin View",
+      "position": {
+        "x": 420,
+        "y": 2120
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhfm9-1wfpe"
+    },
+    {
+      "id": "the-audit-log",
+      "type": "classic",
+      "title": "The audit log",
+      "position": {
+        "x": 720,
+        "y": 2120
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhfm9-1wfpe"
+    },
+    {
+      "id": "personal-access-tokens",
+      "type": "classic",
+      "title": "Personal access tokens",
+      "position": {
+        "x": -24,
+        "y": 2470
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "color": "--node-paper",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhgws-1xigg"
+    },
+    {
+      "id": "mcp-server",
+      "type": "classic",
+      "title": "MCP server",
+      "position": {
+        "x": 420,
+        "y": 2360
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhgws-1xigg"
+    },
+    {
+      "id": "sessions",
+      "type": "classic",
+      "title": "Stateless",
+      "position": {
+        "x": 720,
+        "y": 2360
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhgws-1xigg"
+    },
+    {
+      "id": "attribution-and-undo",
+      "type": "classic",
+      "title": "Attribution and undo",
+      "position": {
+        "x": 1020,
+        "y": 2360
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhgws-1xigg"
+    },
+    {
+      "id": "get-config",
+      "type": "classic",
+      "title": "get_config",
+      "position": {
+        "x": 420,
+        "y": 2470
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhgws-1xigg"
+    },
+    {
+      "id": "organising-never-un-organising",
+      "type": "classic",
+      "title": "Organising, never un-organising",
+      "position": {
+        "x": 420,
+        "y": 2580
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhgws-1xigg"
+    },
+    {
+      "id": "archive-never-delete",
+      "type": "classic",
+      "title": "Archive, never delete",
+      "position": {
+        "x": -24,
+        "y": 2875
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "color": "--node-paper",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhis0-1yfzq"
+    },
+    {
+      "id": "snapshots",
+      "type": "classic",
+      "title": "Snapshots",
+      "position": {
+        "x": 420,
+        "y": 2820
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhis0-1yfzq"
+    },
+    {
+      "id": "deliberately-absent",
+      "type": "classic",
+      "title": "Deliberately absent",
+      "position": {
+        "x": 420,
+        "y": 2930
+      },
+      "size": {
+        "width": 184,
+        "height": 76
+      },
+      "shape": "rect",
+      "status": "documented",
+      "createdVia": "mcp",
+      "createdBy": {
+        "token": "Claude Code",
+        "at": "2026-07-31T22:53:42.561Z"
+      },
+      "frameId": "frame-ms9jhis0-1yfzq"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-ms9ji2ze-1zqke",
+      "source": "files-are-the-database",
+      "target": "serialized-writes",
+      "label": "requires"
+    },
+    {
+      "id": "edge-ms9ji2ze-20y4x",
+      "source": "files-are-the-database",
+      "target": "a-board-is-a-directory",
+      "label": "stored as"
+    },
+    {
+      "id": "edge-ms9ji2ze-21grq",
+      "source": "a-board-is-a-directory",
+      "target": "ids-are-slugs",
+      "label": "named by"
+    },
+    {
+      "id": "edge-ms9ji2ze-22nu3",
+      "source": "a-board-is-a-directory",
+      "target": "boards-of-linked-nodes",
+      "label": "presented as"
+    },
+    {
+      "id": "edge-ms9ji2ze-23cxa",
+      "source": "boards-of-linked-nodes",
+      "target": "map-world",
+      "label": "world"
+    },
+    {
+      "id": "edge-ms9ji2ze-24gwe",
+      "source": "boards-of-linked-nodes",
+      "target": "graph-world",
+      "label": "world"
+    },
+    {
+      "id": "edge-ms9ji2ze-25haq",
+      "source": "boards-of-linked-nodes",
+      "target": "canvas-annotations",
+      "label": "captioned by"
+    },
+    {
+      "id": "edge-ms9ji2ze-26wzv",
+      "source": "map-world",
+      "target": "frames",
+      "label": "groups with"
+    },
+    {
+      "id": "edge-ms9ji2ze-27exl",
+      "source": "frames",
+      "target": "sub-boards",
+      "label": "promotes into"
+    },
+    {
+      "id": "edge-ms9ji2ze-28a3z",
+      "source": "boards-of-linked-nodes",
+      "target": "node-notes",
+      "label": "documented by"
+    },
+    {
+      "id": "edge-ms9ji2ze-29n5u",
+      "source": "node-notes",
+      "target": "coverage",
+      "label": "shows as"
+    },
+    {
+      "id": "edge-ms9ji2ze-2akjr",
+      "source": "node-notes",
+      "target": "wiki-links",
+      "label": "creates"
+    },
+    {
+      "id": "edge-ms9ji2ze-2bsqw",
+      "source": "node-notes",
+      "target": "data-snippets",
+      "label": "carries"
+    },
+    {
+      "id": "edge-ms9ji2ze-2clkd",
+      "source": "node-notes",
+      "target": "status",
+      "label": "tracked by"
+    },
+    {
+      "id": "edge-ms9ji2ze-2dvu9",
+      "source": "node-notes",
+      "target": "export",
+      "label": "becomes"
+    },
+    {
+      "id": "edge-ms9ji2ze-2eh2y",
+      "source": "wiki-links",
+      "target": "graph-world",
+      "label": "drawn on"
+    },
+    {
+      "id": "edge-ms9ji2ze-2f468",
+      "source": "the-dashboard",
+      "target": "folders-and-favourites",
+      "label": "arranges with"
+    },
+    {
+      "id": "edge-ms9ji2ze-2ggpz",
+      "source": "the-dashboard",
+      "target": "search",
+      "label": "finds with"
+    },
+    {
+      "id": "edge-ms9ji2ze-2hahq",
+      "source": "accounts-and-workspaces",
+      "target": "sharing",
+      "label": "allows"
+    },
+    {
+      "id": "edge-ms9ji2ze-2i2kf",
+      "source": "sharing",
+      "target": "duplicate-to-workspace",
+      "label": "grants"
+    },
+    {
+      "id": "edge-ms9ji2ze-2jrhx",
+      "source": "accounts-and-workspaces",
+      "target": "admin-view",
+      "label": "overseen by"
+    },
+    {
+      "id": "edge-ms9ji2ze-2kupu",
+      "source": "admin-view",
+      "target": "the-audit-log",
+      "label": "writes"
+    },
+    {
+      "id": "edge-ms9ji2ze-2lg8m",
+      "source": "accounts-and-workspaces",
+      "target": "personal-access-tokens",
+      "label": "issues"
+    },
+    {
+      "id": "edge-ms9ji2ze-2mo0z",
+      "source": "personal-access-tokens",
+      "target": "mcp-server",
+      "label": "authenticates"
+    },
+    {
+      "id": "edge-ms9ji2ze-2nj4r",
+      "source": "mcp-server",
+      "target": "sessions",
+      "label": "scoped by"
+    },
+    {
+      "id": "edge-ms9ji2ze-2o7su",
+      "source": "sessions",
+      "target": "attribution-and-undo",
+      "label": "guarded by"
+    },
+    {
+      "id": "edge-ms9ji2ze-2pgaj",
+      "source": "mcp-server",
+      "target": "get-config",
+      "label": "reads first"
+    },
+    {
+      "id": "edge-ms9ji2ze-2qv79",
+      "source": "mcp-server",
+      "target": "organising-never-un-organising",
+      "label": "extends to"
+    },
+    {
+      "id": "edge-ms9ji2ze-2rk1g",
+      "source": "attribution-and-undo",
+      "target": "snapshots",
+      "label": "uses"
+    },
+    {
+      "id": "edge-ms9ji2ze-2s0j8",
+      "source": "archive-never-delete",
+      "target": "snapshots",
+      "label": "alongside"
+    },
+    {
+      "id": "edge-ms9ji2ze-2tgiu",
+      "source": "archive-never-delete",
+      "target": "deliberately-absent",
+      "label": "in the same spirit"
+    }
+  ],
+  "frames": [
+    {
+      "id": "frame-ms9jh97k-1snef",
+      "title": "The premise",
+      "position": {
+        "x": -68,
+        "y": -72
+      },
+      "size": {
+        "width": 716,
+        "height": 412
+      },
+      "color": "--node-slate"
+    },
+    {
+      "id": "frame-ms9jhafu-1t8nt",
+      "title": "The canvas",
+      "position": {
+        "x": -80,
+        "y": 408
+      },
+      "size": {
+        "width": 1316,
+        "height": 412
+      },
+      "color": "--node-sky"
+    },
+    {
+      "id": "frame-ms9jhcpm-1umr4",
+      "title": "The documentation layer",
+      "position": {
+        "x": -68,
+        "y": 908
+      },
+      "size": {
+        "width": 716,
+        "height": 632
+      },
+      "color": "--node-mint"
+    },
+    {
+      "id": "frame-ms9jhe3q-1vw11",
+      "title": "The shelf",
+      "position": {
+        "x": -68,
+        "y": 1588
+      },
+      "size": {
+        "width": 716,
+        "height": 302
+      },
+      "color": "--node-aqua"
+    },
+    {
+      "id": "frame-ms9jhfm9-1wfpe",
+      "title": "People",
+      "position": {
+        "x": -68,
+        "y": 1938
+      },
+      "size": {
+        "width": 1016,
+        "height": 302
+      },
+      "color": "--node-lemon"
+    },
+    {
+      "id": "frame-ms9jhgws-1xigg",
+      "title": "Agents",
+      "position": {
+        "x": -68,
+        "y": 2288
+      },
+      "size": {
+        "width": 1316,
+        "height": 412
+      },
+      "color": "--node-lilac"
+    },
+    {
+      "id": "frame-ms9jhis0-1yfzq",
+      "title": "Keeping it safe",
+      "position": {
+        "x": -68,
+        "y": 2748
+      },
+      "size": {
+        "width": 716,
+        "height": 302
+      },
+      "color": "--node-peach"
+    }
+  ],
+  "texts": [
+    {
+      "id": "text-ms9ji4kd-2up3p",
+      "text": "Cartographer, end to end — v4",
+      "position": {
+        "x": -44,
+        "y": -230
+      },
+      "size": "lg",
+      "bold": true
+    },
+    {
+      "id": "text-ms9ji4kd-2vzr5",
+      "text": "Read top to bottom: what it is, what you draw on, what you write, where it lives on the shelf, who it is for, what an agent may touch, and what keeps it safe.",
+      "position": {
+        "x": -44,
+        "y": -180
+      },
+      "size": "sm",
+      "italic": true
+    },
+    {
+      "id": "text-ms9ji4kd-2wl06",
+      "text": "Everything below this line is reachable by an agent — and nothing below it can destroy anything.",
+      "position": {
+        "x": -44,
+        "y": 2262
+      },
+      "size": "sm",
+      "italic": true
+    }
+  ],
+  "createdAt": "2026-07-31T22:52:36.699Z",
+  "updatedAt": "2026-08-01T01:10:08.941Z",
+  "viewport": {
+    "x": 381.36214376959776,
+    "y": 167.13235641735915,
+    "zoom": 0.7476232293555082
+  }
+}

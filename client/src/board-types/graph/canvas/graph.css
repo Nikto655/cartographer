@@ -1,0 +1,349 @@
+/* The graph world's canvas (v1.5 §3.1) — dots, hairlines, and a lot of space. */
+.cg-graph {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-canvas);
+}
+.cg-graph .react-flow__background {
+  background: var(--bg-canvas);
+}
+/* The dot is the node: nothing may clip the label sitting beside it. */
+.cg-graph .react-flow__node {
+  overflow: visible;
+  transition: opacity var(--dur-base) var(--ease);
+}
+
+/* ---- hover halo: the node and its direct connections stay lit ---- */
+/* The filter dims by the same rule, so the two never fight over an opacity. */
+.cg-graph--hovering .react-flow__node.is-dim,
+.cg-graph--hovering .react-flow__edge.is-dim,
+.cg-graph--filtering .react-flow__node.is-dim,
+.cg-graph--filtering .react-flow__edge.is-dim {
+  opacity: 0.2;
+}
+
+/* ---- entity dot ---- */
+.cg-entity {
+  position: relative;
+  border-radius: var(--radius-pill);
+  background: var(--entity-fill);
+  box-shadow: 0 0 0 1px var(--bg-canvas);
+  transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+  animation: entity-in var(--dur-base) var(--ease);
+}
+@keyframes entity-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.cg-graph .react-flow__node:hover .cg-entity {
+  transform: scale(1.25);
+}
+
+/* Empty of notes reads as an outline, exactly as a hollow card does on a map. */
+.cg-entity--hollow {
+  background: var(--bg-canvas);
+  box-shadow: inset 0 0 0 1.5px var(--entity-fill);
+}
+/* A board inside: a ring standing off the dot, with canvas showing through. */
+.cg-entity--parent {
+  box-shadow: 0 0 0 2px var(--bg-canvas), 0 0 0 3.5px var(--entity-fill);
+}
+.cg-entity--hollow.cg-entity--parent {
+  box-shadow: inset 0 0 0 1.5px var(--entity-fill), 0 0 0 2px var(--bg-canvas),
+    0 0 0 3.5px var(--entity-fill);
+}
+.cg-entity.is-selected,
+.cg-entity--parent.is-selected,
+.cg-entity--hollow.is-selected {
+  box-shadow: 0 0 0 2px var(--accent), 0 0 0 6px var(--accent-dim);
+}
+
+.cg-entity__label {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  max-width: 190px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--text-mid);
+  pointer-events: none;
+}
+.cg-entity__label--near {
+  font-size: 12px;
+  color: var(--text-hi);
+}
+/* The same sub-board mark the map card carries, drawn from the same icon set —
+   two worlds, one vocabulary. */
+.cg-entity__glyph {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-low);
+}
+.cg-entity__glyph svg {
+  display: block;
+  stroke-width: 1.75;
+}
+
+/* Drawn by an agent (v1.7 §4) — hangs off the corner opposite the unknown-type
+   badge, on the canvas rather than on the dot so the fill keeps reading. */
+.cg-entity__agent {
+  position: absolute;
+  bottom: -6px;
+  left: -6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-canvas);
+  color: var(--text-low);
+  line-height: 0;
+  opacity: 0.6;
+}
+
+/* Unknown node type (§1) — said quietly, never as an error. */
+.cg-entity__badge {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-inset);
+  border: 1px solid var(--line-hair);
+  color: var(--text-low);
+  font-size: 9px;
+  line-height: 1;
+}
+
+/* ---- ghost: mentioned, not yet real (§4.2) ---- */
+.cg-ghost {
+  position: relative;
+  border-radius: var(--radius-pill);
+  background: none;
+  border: 1.5px dashed var(--text-low);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+  animation: entity-in var(--dur-base) var(--ease);
+}
+.cg-graph .react-flow__node:hover .cg-ghost {
+  transform: scale(1.25);
+  border-color: var(--accent);
+}
+/* Anchors for the derived line only — never seen, never grabbed. */
+.cg-ghost__handle {
+  width: 1px;
+  height: 1px;
+  min-width: 0;
+  min-height: 0;
+  border: none;
+  background: none;
+  opacity: 0;
+  pointer-events: none;
+}
+.cg-ghost__label {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 6px;
+  max-width: 190px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+  font-style: italic;
+  line-height: 1.2;
+  color: var(--text-low);
+  pointer-events: none;
+}
+
+/* ---- handles: out of the way until the dot is under the cursor ---- */
+.cg-entity__handle {
+  width: 6px;
+  height: 6px;
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid var(--accent);
+  background: var(--bg-card);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease);
+}
+.cg-graph .react-flow__node:hover .cg-entity__handle,
+.cg-entity.is-selected .cg-entity__handle {
+  opacity: 1;
+}
+/* The grab area grows outward only, so the dot itself stays draggable. */
+.cg-entity__handle::after {
+  content: '';
+  position: absolute;
+  inset: -9px;
+}
+.react-flow__handle-top.cg-entity__handle::after {
+  bottom: 50%;
+}
+.react-flow__handle-bottom.cg-entity__handle::after {
+  top: 50%;
+}
+.react-flow__handle-left.cg-entity__handle::after {
+  right: 50%;
+}
+.react-flow__handle-right.cg-entity__handle::after {
+  left: 50%;
+}
+
+/* ---- edges: solid hairlines, arrowheaded like the map's ---- */
+.cg-graph .react-flow__edge-path {
+  stroke: var(--edge-line);
+  stroke-width: 1.5;
+}
+/*
+ * Stated here rather than inherited from the map's stylesheet: a world styling
+ * itself out of another world's CSS is the same boundary violation as importing
+ * from it, and it would break the moment a board opened without the map loaded.
+ */
+.cg-graph .react-flow__arrowhead * {
+  fill: var(--edge-line);
+}
+.cg-graph .react-flow__edge.selected .react-flow__edge-path,
+.cg-graph .react-flow__edge:hover .react-flow__edge-path {
+  stroke: var(--accent);
+}
+.cg-graph--hovering .react-flow__edge.is-lit .react-flow__edge-path {
+  stroke: var(--text-low);
+}
+
+/* The derived layer: a mention, not a decision — thinner and quieter (§3.1). */
+.cg-graph .react-flow__edge-path.cg-derived-edge {
+  stroke: var(--edge-line);
+  stroke-width: 1;
+  opacity: 0.45;
+}
+/* A line to something that does not exist yet is dashed, like the dot it meets. */
+.cg-graph .react-flow__edge-path.cg-derived-edge--ghost {
+  stroke-dasharray: 3 3;
+}
+.cg-graph .react-flow__edge:hover .react-flow__edge-path.cg-derived-edge {
+  stroke: var(--edge-line);
+}
+
+.cg-graph-label-wrap {
+  position: absolute;
+  pointer-events: all;
+}
+.cg-graph-label {
+  padding: 2px var(--sp-2);
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-node);
+  color: var(--text-mid);
+  font-size: 11px;
+  font-family: var(--font-mono);
+  cursor: text;
+}
+.cg-graph-input {
+  width: 118px;
+  padding: 2px var(--sp-2);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  color: var(--text-hi);
+  font-size: 11px;
+  font-family: var(--font-mono);
+  outline: none;
+}
+.cg-graph-edge-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-chrome);
+  -webkit-backdrop-filter: var(--chrome-blur);
+  backdrop-filter: var(--chrome-blur);
+  border: 1px solid var(--line-hair);
+  box-shadow: var(--shadow-float);
+}
+.cg-graph-edge-toolbar__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 22px;
+  padding: 0 var(--sp-2);
+  border: none;
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--text-mid);
+  font-size: 10px;
+  font-family: var(--font-mono);
+  cursor: pointer;
+}
+.cg-graph-edge-toolbar__btn:hover {
+  background: var(--bg-inset);
+  color: var(--text-hi);
+}
+.cg-graph-edge-toolbar__btn--danger:hover {
+  background: var(--danger);
+  color: var(--bg-card);
+}
+.cg-graph-edge-toolbar__sep {
+  width: 1px;
+  height: 14px;
+  background: var(--line-hair);
+}
+
+/* ---- viewport chrome ---- */
+/* The controls sit under the app's top-right pill and never reach the minimap. */
+.cg-graph__controls {
+  position: absolute;
+  top: calc(var(--chrome-inset) + var(--chrome-height) + var(--sp-2));
+  right: var(--chrome-inset);
+  bottom: calc(var(--chrome-inset) + var(--chrome-height) + var(--sp-4));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.cg-graph .zoom-pill__value {
+  min-width: 52px;
+  font-size: var(--type-label);
+}
+.cg-graph .react-flow__minimap {
+  background: var(--bg-chrome);
+  -webkit-backdrop-filter: var(--chrome-blur);
+  backdrop-filter: var(--chrome-blur);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-float);
+  margin-right: var(--chrome-inset);
+  margin-bottom: var(--chrome-inset);
+}
+.cg-graph .react-flow__selection {
+  background: var(--accent-dim);
+  border: 1px solid var(--accent);
+}
+
+/* Read-only (v1.6 §5): the dots keep their anchors, but offer no grab points. */
+.cg-graph--readonly .react-flow__handle {
+  display: none;
+}

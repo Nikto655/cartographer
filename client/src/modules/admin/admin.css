@@ -1,0 +1,200 @@
+/* Admin panel (v1.6 §3) — a roster, not another canvas. Plain rows, no cards. */
+.cg-admin {
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--line-hair);
+}
+
+.cg-admin__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+}
+.cg-admin__title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-hi);
+}
+
+.cg-admin__empty {
+  padding: var(--sp-4) 0;
+}
+
+.cg-admin__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.cg-admin__row-group {
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+  overflow: hidden;
+}
+
+.cg-admin__row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3);
+  cursor: pointer;
+}
+.cg-admin__row:hover,
+.cg-admin__row--open {
+  background: var(--bg-inset);
+}
+
+.cg-admin__identity {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+.cg-admin__name {
+  font-size: var(--type-ui);
+  font-weight: 500;
+  color: var(--text-hi);
+}
+.cg-admin__username {
+  font-size: var(--type-label);
+}
+
+.cg-admin__status {
+  flex: none;
+  font-size: var(--type-label);
+  padding: 2px var(--sp-2);
+  border-radius: var(--radius-pill);
+  background: var(--bg-inset);
+  color: var(--text-mid);
+}
+.cg-admin__status--active {
+  color: var(--status-built);
+}
+.cg-admin__status--disabled {
+  color: var(--danger);
+}
+.cg-admin__status--temp {
+  color: var(--status-documented);
+}
+
+.cg-admin__seen {
+  flex: none;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.cg-admin__more {
+  flex: none;
+  border: none;
+  background: none;
+  color: var(--text-low);
+  cursor: pointer;
+  padding: 0 var(--sp-1);
+  min-height: 24px;
+}
+.cg-admin__more:hover {
+  color: var(--text-hi);
+}
+
+/* A user's boards, read-only — same idea as the parent's own grid, quieter. */
+.cg-admin__boards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding: 0 var(--sp-3) var(--sp-3);
+  border-top: 1px solid var(--line-hair);
+}
+.cg-admin__boards-hint {
+  padding: var(--sp-2) 0 0;
+}
+.cg-admin__board {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2);
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+.cg-admin__board:hover {
+  background: var(--bg-inset);
+}
+.cg-admin__board-name {
+  font-size: var(--type-ui);
+  color: var(--text-hi);
+}
+.cg-admin__board-meta {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* Add-user form */
+.cg-admin__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.cg-admin__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+.cg-admin__submit {
+  margin-top: var(--sp-1);
+}
+
+/* Temp password — shown once, so it has to be unmistakable. */
+.cg-admin__temp-intro {
+  margin: 0 0 var(--sp-3);
+  color: var(--text-mid);
+}
+.cg-admin__temp-password {
+  font-size: var(--type-prose);
+  padding: var(--sp-3);
+  border-radius: var(--radius-control);
+  background: var(--bg-inset);
+  color: var(--text-hi);
+  text-align: center;
+  letter-spacing: 0.04em;
+  user-select: all;
+  margin-bottom: var(--sp-3);
+}
+.cg-admin__copy {
+  width: 100%;
+}
+.cg-admin__temp-warning {
+  margin: var(--sp-3) 0 0;
+  font-size: var(--type-label);
+  color: var(--danger);
+}
+
+/* Renaming changes a login handle, so the consequence is stated, not implied.
+   A sentence, so it takes the label's size but not its uppercasing. */
+.cg-admin__hint {
+  margin: 0;
+  font-size: var(--type-label);
+  line-height: 1.45;
+  color: var(--text-mid);
+}
+
+/* Boards their owner deleted (v1.9) — visible only here, removable only here. */
+.cg-admin__deleted {
+  margin-top: var(--sp-3);
+  padding-top: var(--sp-2);
+  border-top: 1px dashed var(--line-hair);
+}
+.cg-admin__board--deleted {
+  cursor: default;
+  color: var(--text-mid);
+}
+.cg-admin__purge:hover:not(:disabled) {
+  color: var(--danger);
+}
+.cg-admin__confirm {
+  margin: 0;
+  font-size: var(--type-ui);
+  color: var(--text-mid);
+  line-height: 1.5;
+}

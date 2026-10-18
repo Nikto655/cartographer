@@ -1,0 +1,129 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg-canvas);
+  color: var(--text-hi);
+  font-family: var(--font-sans);
+  font-size: var(--type-ui);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent-dim);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-dim);
+  outline-offset: 2px;
+  border-radius: var(--radius-control);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-hair);
+  border-radius: 8px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--line-hair);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.app-shell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.label {
+  font-size: var(--type-label);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-low);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.muted {
+  color: var(--text-mid);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-mid);
+  text-align: center;
+}
+
+/*
+ * Edge labels sit above nodes, in both worlds.
+ *
+ * React Flow renders `.react-flow__edgelabel-renderer` and `.react-flow__nodes`
+ * as siblings inside the viewport, both at `z-index: auto` — so the nodes layer
+ * wins on DOM order alone and anything an edge draws at its midpoint is painted
+ * over. For a label that means unreadable; for the toolbar an edge shows when
+ * selected it means unclickable, because the node above it takes the press. A
+ * node parked over an edge's midpoint made its whole toolbar inert.
+ *
+ * Safe to raise wholesale: React Flow gives this layer `pointer-events: none`
+ * and each label opts itself back in, so lifting it changes what is *on top*
+ * without making the layer swallow clicks meant for the canvas.
+ *
+ * Here rather than in either world's stylesheet because it is a fact about React
+ * Flow's DOM, identical in both, and the two edge implementations have drifted
+ * before. `1` — just clear of the nodes' own `0`, and far below the chrome.
+ */
+.react-flow__edgelabel-renderer {
+  z-index: 1;
+}

@@ -1,0 +1,117 @@
+/*
+ * Folder cards are board cards at another scale — they carry `.cg-board-card`
+ * and take its surface, its hover and its two-line head height from there, so
+ * the two grids read as one shelf rather than as two components (§2).
+ */
+.cg-folders {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+/* The world mark's geometry, with the folder's colour where the inset would be. */
+.cg-folder-card__glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  border-radius: var(--radius-control);
+  color: var(--text-mid);
+}
+.cg-folder-card:hover .cg-folder-card__glyph {
+  color: var(--text-hi);
+}
+/* Unfiled is a destination, not a folder — a dashed tray says so before the label does. */
+.cg-folder-card--unfiled .cg-folder-card__glyph {
+  border: 1px dashed var(--line-hair);
+}
+.cg-folder-card--open {
+  border-color: var(--accent);
+}
+/* The standard drop highlight: the same accent ring a chosen swatch wears. */
+.cg-folder-card--drop {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  background: var(--bg-inset);
+}
+
+.cg-folders__open {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.cg-folders__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-height: 28px;
+}
+.cg-folders__crumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+.cg-folders__crumb {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: var(--type-ui);
+  color: var(--text-mid);
+}
+.cg-folders__crumb:hover {
+  color: var(--accent);
+}
+.cg-folders__slash {
+  color: var(--text-low);
+}
+.cg-folders__name {
+  font-size: var(--type-ui);
+  font-weight: 500;
+  color: var(--text-hi);
+  padding: 1px 3px;
+  border-radius: 4px;
+}
+.cg-folders__name:hover {
+  background: var(--bg-inset);
+}
+.cg-folders__section {
+  margin: 0;
+}
+/* The palette inside the card's ⋯ menu. It wraps, because the menu is narrower
+   than the settings panel the swatch row was built for. */
+.cg-folders__menu-colors {
+  padding: var(--sp-1) var(--sp-2) var(--sp-2);
+  max-width: 196px;
+}
+.cg-folders__menu-colors .cg-settings__swatches {
+  flex-wrap: wrap;
+}
+.cg-folders__empty {
+  margin: 0;
+  font-size: var(--type-ui);
+}
+
+/* ---- dialogs ---- */
+.cg-folders__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  align-items: flex-start;
+}
+.cg-folders__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  width: 100%;
+}
+.cg-folders__confirm {
+  margin: 0;
+  font-size: var(--type-ui);
+  color: var(--text-mid);
+  line-height: 1.5;
+}

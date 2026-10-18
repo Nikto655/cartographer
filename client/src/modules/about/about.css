@@ -1,0 +1,65 @@
+/* About — version, links, and the licence line. */
+.cg-about {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.cg-about__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.cg-about__name {
+  font-size: var(--type-prose);
+  font-weight: 600;
+  color: var(--text-hi);
+}
+.cg-about__version {
+  font-family: var(--font-mono);
+  font-size: var(--type-label);
+  color: var(--text-low);
+}
+
+.cg-about__blurb {
+  margin: 0;
+  font-size: var(--type-ui);
+  line-height: 1.5;
+  color: var(--text-mid);
+}
+
+.cg-about__links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-card);
+  background: var(--bg-inset);
+}
+.cg-about__links li + li {
+  border-top: 1px solid var(--line-hair);
+}
+.cg-about__link {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  font-size: var(--type-ui);
+  color: var(--text-hi);
+  text-decoration: none;
+}
+.cg-about__link:hover,
+.cg-about__link:focus-visible {
+  color: var(--accent);
+}
+.cg-about__out {
+  margin-left: auto;
+  color: var(--text-low);
+}
+
+.cg-about__legal {
+  margin: 0;
+  font-size: var(--type-label);
+  line-height: 1.5;
+  color: var(--text-low);
+}

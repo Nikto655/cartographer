@@ -1,0 +1,485 @@
+.cg-dashboard {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: var(--sp-5) var(--sp-6);
+  /* Room under the last row for the fixed selection hint, which would otherwise
+     sit over a card's meta line once you scrolled to the bottom. */
+  padding-bottom: var(--sp-7);
+  background: var(--bg-canvas);
+}
+
+.cg-dashboard__head {
+  display: flex;
+  margin-bottom: var(--sp-4);
+}
+.cg-dashboard__topline {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.cg-dashboard__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.cg-dashboard__wordmark {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--text-hi);
+}
+.cg-dashboard__new {
+  width: 220px;
+}
+
+/* View switcher, count and Create share one line above the grid. */
+.cg-dashboard__tabline {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-4);
+  border-bottom: 1px solid var(--line-hair);
+}
+/* The rule now belongs to the whole row, so the tabs must not draw their own
+   or it would stop short at the last tab. */
+.cg-dashboard__tabline .tabs {
+  margin: 0;
+  border-bottom: none;
+}
+.cg-dashboard__count {
+  white-space: nowrap;
+}
+/* Between the tabs and the count (§4). Narrow on purpose: it filters a shelf,
+   it is not the place you type a question. */
+.cg-dashboard__search {
+  flex: none;
+  width: 190px;
+  min-height: 28px;
+}
+/* The order control stands where the static "newest first" label stood, and
+   keeps that label's voice rather than reading as another button. */
+/* A hairline and mid-tone text, because at --text-low with no edge it read as
+   part of the count beside it rather than as something you could press. */
+.cg-dashboard__sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  min-height: 26px;
+  padding: 0 var(--sp-2);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  font-size: var(--type-label);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  white-space: nowrap;
+}
+.cg-dashboard__sort:hover:not(:disabled) {
+  color: var(--text-hi);
+}
+
+/*
+ * The selection hint. Fixed to the bottom-right corner rather than placed in the
+ * flow, so it does not move as the grid grows and never lands between two rows
+ * of cards. `pointer-events: none` because it is a caption, not a control — it
+ * sits over the page and must never eat a click meant for a card beneath it.
+ */
+.cg-dashboard__hint {
+  position: fixed;
+  right: var(--sp-5);
+  bottom: var(--sp-5);
+  z-index: var(--z-float);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  /* Bare on the canvas — no chip, no edge, no backdrop. It is a caption, and a
+     pill gave it the weight of a control. `pointer-events: none` because it
+     sits over the page and must never eat a click meant for a card beneath. */
+  color: var(--text-low);
+  pointer-events: none;
+  user-select: none;
+}
+
+/*
+ * Recent's sections — Pinned, Shared with me, Boards — one divider style for
+ * all of them, drawn between neighbours so the first carries no stray rule.
+ * SharedWithMe renders `--bare` inside this container for exactly that reason.
+ */
+.cg-dashboard__sections > section + section {
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--line-hair);
+}
+/* The same voice as .cg-shared__title, so the three sections read as one set. */
+.cg-dashboard__grouptitle {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin: 0 0 var(--sp-4);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-hi);
+}
+.cg-dashboard__grouptitle svg {
+  color: var(--text-low);
+}
+.cg-dashboard__section {
+  margin: 0 0 var(--sp-2);
+}
+.cg-dashboard__nomatch,
+.cg-dashboard__confirm {
+  margin: 0;
+  font-size: var(--type-ui);
+  line-height: 1.5;
+}
+
+.cg-board-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+  gap: var(--sp-3);
+  align-items: start;
+}
+
+.cg-board-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+/* No entrance animation — this should feel like a file manager (§9.4). */
+.cg-board-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-panel);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-node);
+  cursor: pointer;
+  transition: box-shadow var(--dur-fast) var(--ease);
+  /* `Shift+click` ranges (§6), and a shift-click on text is a text selection —
+     the grid would streak blue as a range was picked. The rename field opts
+     back in below, because typing in a field you cannot select from is worse. */
+  -webkit-user-select: none;
+  user-select: none;
+}
+.cg-board-card input {
+  -webkit-user-select: text;
+  user-select: text;
+}
+.cg-board-card:hover {
+  box-shadow: var(--shadow-float);
+}
+.cg-board-card:focus-visible {
+  box-shadow: var(--shadow-node), 0 0 0 2px var(--accent-dim);
+}
+
+/*
+ * Always as tall as a two-line title, whether or not the title needs two.
+ *
+ * Card height used to follow the name, so one long board name made its row of
+ * the grid taller than the others and every metadata line in that row sat at a
+ * different height. The eye re-finds the node count on each card instead of
+ * reading across. Reserving the taller case costs a line of whitespace on short
+ * names and buys an even grid — and it is a *minimum*, so a three-line name
+ * still shows in full rather than being clipped.
+ *
+ * `--type-ui` × the base 1.5 line-height × 2, plus the name's own 1px padding.
+ */
+.cg-board-card__head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  min-height: calc(var(--type-ui) * 3 + 2px);
+}
+/* The mark and the menu stay on the first line rather than centring on two. */
+.cg-board-card__world,
+.cg-board-card__more {
+  margin-top: 1px;
+}
+/* Which world a board is (§3.4) — a mark, not a badge: the name still leads. */
+.cg-board-card__world {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-control);
+  background: var(--bg-inset);
+  color: var(--text-mid);
+}
+.cg-board-card:hover .cg-board-card__world {
+  color: var(--text-hi);
+}
+.cg-board-card__name {
+  font-size: var(--type-ui);
+  font-weight: 500;
+  padding: 1px 3px;
+  border-radius: 4px;
+  /* Wrap rather than push the mark and the menu off the card. */
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+/*
+ * Name over parent, and it takes every pixel the mark and the actions leave.
+ *
+ * `flex: 1` rather than letting a `.spacer` mop up the slack: with the slack
+ * held by a spacer the title was only ever as wide as its own content, so the
+ * name wrapped early and left a gap to its right that belonged to nothing.
+ */
+.cg-board-card__title {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+/*
+ * The star and the menu, as one cluster with its own tight gap. They are always
+ * present — only their opacity changes — so this reserves the same width on
+ * every card and the title's right edge never moves.
+ */
+.cg-board-card__actions {
+  display: flex;
+  align-items: flex-start;
+  flex: none;
+  gap: 2px;
+}
+/*
+ * Which board this one lives under — Recent is flat, so the card has to say it.
+ *
+ * It began life in the metadata line, clipped to 14ch between the node count and
+ * the timestamp, where it read as a third statistic and was too short to be
+ * legible. As a subtitle it gets the width of the card and answers the question
+ * the title raises, which is where the eye already is.
+ */
+.cg-board-card__parent {
+  font-size: var(--type-label);
+  color: var(--text-mid);
+  padding-left: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cg-board-card__name:hover {
+  background: var(--bg-canvas);
+}
+.cg-board-card__more {
+  opacity: 0;
+  border: none;
+  background: none;
+  color: var(--text-low);
+  cursor: pointer;
+  /* 2px, not --sp-1: this pair is permanently reserved out of the title's row,
+     so every pixel of padding here is a pixel the board name never gets. */
+  padding: 0 2px;
+  min-height: 24px;
+}
+.cg-board-card:hover .cg-board-card__more,
+.cg-board-card:focus-within .cg-board-card__more {
+  opacity: 1;
+}
+.cg-board-card__more:hover {
+  color: var(--text-hi);
+}
+
+.cg-board-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--type-label);
+  color: var(--text-low);
+}
+.cg-board-card__dot {
+  color: var(--text-low);
+}
+/* Last updated sits at the right edge of the meta line. */
+.cg-board-card__time {
+  margin-left: auto;
+  padding-left: var(--sp-2);
+  white-space: nowrap;
+}
+.cg-board-card__children {
+  border: none;
+  background: none;
+  color: var(--text-mid);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--type-label);
+  padding: 0;
+}
+.cg-board-card__children:hover {
+  color: var(--accent);
+}
+/* In Main the count is a fact, not a control. */
+.cg-board-card__children--static {
+  cursor: default;
+  color: var(--text-low);
+}
+.cg-board-card__children--static:hover {
+  color: var(--text-low);
+}
+
+/*
+ * The star (§3). Hidden until the card is under the pointer, like the ⋯ menu —
+ * except once it is on, when it stays: a favourite you can only see by hovering
+ * is not an emphasis. On, it wears the interaction accent — the same colour an
+ * open folder and a chosen swatch wear, so emphasis reads as one idea.
+ */
+.cg-board-card__star {
+  margin-top: 1px;
+  opacity: 0;
+  border: none;
+  background: none;
+  color: var(--text-low);
+  cursor: pointer;
+  padding: 0 2px;
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.cg-board-card:hover .cg-board-card__star,
+.cg-board-card:focus-within .cg-board-card__star,
+.cg-board-card__star--on {
+  opacity: 1;
+}
+.cg-board-card__star:hover {
+  color: var(--text-hi);
+}
+.cg-board-card__star--on,
+.cg-board-card__star--on:hover {
+  color: var(--accent);
+}
+
+/* Select mode (§6): the checkmark takes the world mark's place rather than
+   crowding beside it, so the card's geometry does not shift as it turns on. */
+.cg-board-card__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  background: var(--bg-inset);
+  color: var(--text-low);
+}
+.cg-board-card__check--on {
+  border-color: transparent;
+  background: var(--accent);
+  color: var(--bg-card);
+}
+.cg-board-card--selected {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-node), 0 0 0 2px var(--accent-dim);
+}
+
+/* Slides up over the shelf while a selection exists, and only then (§6). */
+.cg-selection {
+  position: fixed;
+  left: 50%;
+  bottom: var(--sp-5);
+  /*
+   * Centred with the `translate` longhand, not `transform`, because `rise`
+   * animates `transform` — and a keyframe does not compose with the declaration
+   * it overrides, it replaces it. Centring with `transform` meant the bar spent
+   * the whole animation at `left: 50%` with no offset, sitting half a bar-width
+   * right of centre, and snapped left the frame the animation ended.
+   *
+   * `translate` applies before `transform`, so the two stack and `transform:
+   * none` at the end of `rise` leaves the centring standing.
+   */
+  translate: -50% 0;
+  z-index: var(--z-float);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-pill);
+  background: var(--bg-chrome);
+  -webkit-backdrop-filter: var(--chrome-blur);
+  backdrop-filter: var(--chrome-blur);
+  box-shadow: var(--shadow-float);
+  animation: rise var(--dur-base) var(--ease);
+}
+
+/*
+ * You shared this one. It reads as one more fact about the board alongside the
+ * node count, which is what it is — and unlike the head, this row has room to
+ * spare, so adding it moves nothing.
+ */
+.cg-board-card__shared {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-pill);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* ---- Archive tab (v1.9) ---- */
+.cg-archive {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.cg-archive__note,
+.cg-archive__empty {
+  margin: 0;
+  font-size: var(--type-ui);
+}
+.cg-archive__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+/* A row, not a card: nothing here opens, so nothing should look like it does. */
+.cg-archive__row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-control);
+  background: var(--bg-card);
+}
+.cg-archive__glyph {
+  display: inline-flex;
+  color: var(--text-low);
+}
+.cg-archive__name {
+  font-size: var(--type-ui);
+  font-weight: 500;
+  color: var(--text-hi);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.cg-archive__meta {
+  font-size: var(--type-label);
+  color: var(--text-low);
+  white-space: nowrap;
+}
+.cg-archive__delete:hover:not(:disabled) {
+  color: var(--danger);
+}
+.cg-archive__confirm {
+  margin: 0;
+  font-size: var(--type-ui);
+  color: var(--text-mid);
+  line-height: 1.5;
+}

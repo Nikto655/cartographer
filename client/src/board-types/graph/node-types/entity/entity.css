@@ -1,0 +1,40 @@
+/* The entity panel's own surfaces (v1.5 §3.3) — the two relationship lists. */
+.cg-links {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cg-links__item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  width: 100%;
+  padding: var(--sp-1) var(--sp-2);
+  border: none;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--text-hi);
+  font-size: var(--type-ui);
+  text-align: left;
+  cursor: pointer;
+}
+.cg-links__item:hover {
+  background: var(--bg-inset);
+}
+.cg-links__item svg {
+  flex: none;
+  color: var(--text-low);
+}
+/* A mention with nothing behind it yet: the graph shows a ghost, the list says so. */
+.cg-links__item.is-unresolved {
+  color: var(--text-low);
+  cursor: default;
+  text-decoration: underline dotted var(--text-low);
+  text-underline-offset: 3px;
+}
+.cg-links__item.is-unresolved:hover {
+  background: none;
+}

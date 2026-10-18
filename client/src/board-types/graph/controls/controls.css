@@ -1,0 +1,217 @@
+/* Graph controls (v1.5 §3.2) — the same frosted furniture as every other pill. */
+.graph-controls {
+  pointer-events: all;
+  width: 224px;
+  max-height: calc(100vh - var(--chrome-height) - var(--chrome-inset) * 4);
+  overflow-y: auto;
+  padding: var(--sp-3);
+  border-radius: var(--radius-panel);
+  background: var(--bg-chrome);
+  -webkit-backdrop-filter: var(--chrome-blur);
+  backdrop-filter: var(--chrome-blur);
+  border: 1px solid var(--line-hair);
+  box-shadow: var(--shadow-float);
+  font-size: var(--type-ui);
+  color: var(--text-mid);
+}
+
+.graph-controls__open {
+  pointer-events: all;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-chrome);
+  -webkit-backdrop-filter: var(--chrome-blur);
+  backdrop-filter: var(--chrome-blur);
+  border: 1px solid var(--line-hair);
+  box-shadow: var(--shadow-float);
+  color: var(--text-mid);
+  cursor: pointer;
+}
+.graph-controls__open:hover {
+  color: var(--text-hi);
+}
+
+.graph-controls__head {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--sp-2);
+}
+.graph-controls__close {
+  display: inline-flex;
+  padding: 2px;
+  border: none;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--text-low);
+  cursor: pointer;
+}
+.graph-controls__close:hover {
+  color: var(--text-hi);
+}
+
+/* Groups are separated by a hairline rather than a heading — less furniture. */
+.graph-controls__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-3) 0;
+  border-top: 1px solid var(--line-hair);
+}
+.graph-controls__group:first-of-type {
+  padding-top: 0;
+  border-top: none;
+}
+.graph-controls__group:last-of-type {
+  padding-bottom: 0;
+}
+
+/* ---- sliders ---- */
+.graph-controls__slider {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+.graph-controls__slider-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: var(--type-label);
+  color: var(--text-mid);
+}
+.graph-controls__slider-head .mono {
+  color: var(--text-low);
+}
+.graph-controls__slider input[type='range'] {
+  width: 100%;
+  height: 3px;
+  margin: 0;
+  border-radius: var(--radius-pill);
+  background: var(--bg-inset);
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: ew-resize;
+}
+.graph-controls__slider input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  border: 1px solid var(--line-hair);
+  box-shadow: var(--shadow-node);
+}
+.graph-controls__slider input[type='range']:active::-webkit-slider-thumb {
+  border-color: var(--accent);
+}
+
+/* ---- toggles ---- */
+.graph-controls__toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--text-mid);
+  font-size: var(--type-ui);
+  text-align: left;
+  cursor: pointer;
+}
+.graph-controls__toggle:hover {
+  color: var(--text-hi);
+}
+.graph-controls__switch {
+  position: relative;
+  flex: none;
+  width: 26px;
+  height: 15px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-inset);
+  border: 1px solid var(--line-hair);
+  transition: background var(--dur-fast) var(--ease);
+}
+.graph-controls__switch::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 11px;
+  height: 11px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-node);
+  transition: transform var(--dur-fast) var(--ease);
+}
+.graph-controls__switch.is-on {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.graph-controls__switch.is-on::after {
+  transform: translateX(11px);
+}
+.graph-controls__count {
+  margin-left: auto;
+  font-size: var(--type-label);
+  color: var(--text-low);
+}
+
+/* ---- filter ---- */
+.graph-controls__filter {
+  width: 100%;
+}
+
+/* ---- colour groups ---- */
+.graph-controls__segments {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  border-radius: var(--radius-control);
+  background: var(--bg-inset);
+}
+.graph-controls__segment {
+  flex: 1;
+  padding: 3px 0;
+  border: none;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--text-mid);
+  font-size: var(--type-label);
+  cursor: pointer;
+}
+.graph-controls__segment.is-on {
+  background: var(--bg-card);
+  color: var(--text-hi);
+  box-shadow: var(--shadow-node);
+}
+.graph-controls__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1) var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.graph-controls__key {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: var(--type-label);
+  color: var(--text-mid);
+}
+.graph-controls__swatch {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 0 0 1px var(--line-hair);
+}
+
+.graph-controls__note {
+  margin: var(--sp-3) 0 0;
+  font-size: var(--type-label);
+  line-height: 1.4;
+}

@@ -1,0 +1,107 @@
+/*
+ * Design system v2 (v1.1 §5) — Freeform's body, our brain.
+ * Paper-white canvas, floating frosted pills, soft shadows, spring motion.
+ * No raw hex may appear outside this file.
+ */
+:root {
+  /* Canvas & surfaces */
+  --bg-canvas:   #FDFDFD;
+  --dot-grid:    #DADDE2;                      /* 1.5px dots, 20px pitch, fades below 40% zoom */
+  --bg-chrome:   rgba(255, 255, 255, 0.80);    /* frosted pills/panels, with blur(20px) */
+  --bg-card:     #FFFFFF;
+  --bg-inset:    #F4F5F7;
+
+  /* Lines, shadows, text */
+  --line-hair:   rgba(20, 24, 35, 0.10);
+  --shadow-float: 0 8px 28px rgba(20, 24, 35, 0.14), 0 1px 3px rgba(20, 24, 35, 0.08);
+  --shadow-node: 0 2px 8px rgba(20, 24, 35, 0.10);
+  --text-hi:     #1D1F26;
+  --text-mid:    #6A7080;
+  --text-low:    #9AA0AC;
+
+  /* Interaction accent — system blue, as Freeform */
+  --accent:      #0A84FF;
+  --accent-dim:  rgba(10, 132, 255, 0.22);
+
+  /* Status ramp */
+  --status-sketched:   #9AA0AC;
+  --status-documented: #0A84FF;
+  --status-built:      #30A46C;
+
+  /* Node/frame palette — sticky hues, slightly muted. Frames tint these to 30%. */
+  /* Apple system colours tinted over white — pale enough for dark text to sit on. */
+  --node-paper: #FFFFFF;
+  /* An explicit "no fill" — the canvas shows through. Distinct from leaving the
+     colour unset, which lets coverage decide (paper when written, clear when not). */
+  --node-clear: transparent;
+  --node-slate: #E7E7EC;   /* systemGray   */
+  --node-sky:   #D9EAFF;   /* systemBlue   */
+  --node-aqua:  #D3EEF4;   /* systemTeal   */
+  --node-mint:  #D8F3E1;   /* systemGreen  */
+  --node-lemon: #FFF2C2;   /* systemYellow */
+  --node-peach: #FFE7C9;   /* systemOrange */
+  --node-blush: #FFDCE4;   /* systemPink   */
+  --node-lilac: #EEDDF9;   /* systemPurple */
+  /* Retired in favour of peach; aliased so older boards keep their fill. */
+  --node-sand:  var(--node-peach);
+
+  --danger: #E5484D;
+
+  /* Logo — the interaction blue plus a deeper teal-indigo that sits under it */
+  --logo-front: #35B8E0;
+  --logo-back:  #1B4E8F;
+  --logo-base:  rgba(27, 78, 143, 0.28);
+
+  /* Edges */
+  --edge-line: #B9BEC8;
+  --edge-data: #8B5CF6;                        /* violet — edges that carry data */
+
+  /* Spatial system — 8px grid */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+
+  /* Radii: controls · cards · frames/panels · pills */
+  --radius-control: 6px;
+  --radius-card: 10px;
+  --radius-panel: 14px;
+  --radius-pill: 999px;
+
+  /* Chrome geometry */
+  --chrome-inset: 12px;
+  --chrome-height: 44px;
+  --chrome-blur: blur(20px);
+
+  /* Type — system stack renders SF Pro natively on Mac; Inter is the self-hosted fallback */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
+  --type-ui: 13px;
+  --type-label: 11px;
+  --type-prose: 15px;
+  --leading-prose: 1.65;
+
+  /* Motion — spring feel (§5.5) */
+  --ease: cubic-bezier(0.3, 1.1, 0.4, 1);
+  --dur-fast: 100ms;
+  --dur-base: 160ms;
+  --dur-slow: 200ms;
+  --dur-frame: 220ms;
+
+  --z-panel: 20;
+  --z-chrome: 40;
+  --z-float: 60;
+  --z-overlay: 90;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+    --dur-frame: 0ms;
+  }
+}

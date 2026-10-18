@@ -1,0 +1,31 @@
+{
+  "name": "cartograph",
+  "version": "1.0.5",
+  "private": true,
+  "license": "AGPL-3.0-only",
+  "homepage": "https://github.com/Nikto655/cartographer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nikto655/cartographer"
+  },
+  "bugs": "https://github.com/Nikto655/cartographer/issues",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "build:shared": "npm run build -w @cartograph/shared",
+    "build": "npm run build:shared && npm run build -w @cartograph/server && npm run build -w @cartograph/client",
+    "dev": "npm run build:shared && (npm run dev -w @cartograph/server & npm run dev -w @cartograph/client)",
+    "dev:server": "npm run build:shared && npm run dev -w @cartograph/server",
+    "dev:client": "npm run dev -w @cartograph/client",
+    "start": "node server/dist/index.js",
+    "typecheck": "npm run build:shared && npm run typecheck -w @cartograph/server && npm run typecheck -w @cartograph/client",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,918 @@
+.cg-canvas {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-canvas);
+}
+
+.react-flow__background {
+  background: var(--bg-canvas);
+}
+
+/* Armed tools take over the cursor, Freeform-style. */
+.cg-canvas--armed .react-flow__pane {
+  cursor: crosshair;
+}
+/*
+ * Move is the exception: an open hand, and over everything rather than only the
+ * pane, because with it armed a drag on a *node* pans too. A crosshair there
+ * would promise placing something.
+ */
+.cg-canvas--armed-pan,
+.cg-canvas--armed-pan .react-flow__pane,
+.cg-canvas--armed-pan .react-flow__node {
+  cursor: grab;
+}
+.cg-canvas--armed-pan:active,
+.cg-canvas--armed-pan .react-flow__pane:active,
+.cg-canvas--armed-pan .react-flow__node:active {
+  cursor: grabbing;
+}
+
+/* ---- node card (§5.4): no border, the shadow defines it, like a sticky ---- */
+.cg-node {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--sp-2) var(--sp-3) var(--sp-2) var(--sp-4);
+  border-radius: var(--radius-card);
+  /* No colour chosen means transparent; white is a choice like any other. */
+  background: var(--node-fill, transparent);
+  box-shadow: var(--shadow-node);
+  color: var(--text-hi);
+  transition: box-shadow var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+  animation: node-in var(--dur-base) var(--ease);
+}
+
+@keyframes node-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.cg-node--rect {
+  border-radius: 4px;
+}
+.cg-node--rounded {
+  border-radius: var(--radius-card);
+}
+.cg-node--pill {
+  border-radius: var(--radius-pill);
+  padding-left: var(--sp-4);
+  padding-right: var(--sp-4);
+}
+/* Nothing painted: no shadow to cast, but still an edge so it can be seen. */
+.cg-node--unfilled {
+  box-shadow: none;
+  border: 1px solid var(--line-hair);
+}
+.cg-node--unfilled.cg-node--selected {
+  box-shadow: 0 0 0 2px var(--accent), 0 0 0 6px var(--accent-dim);
+}
+
+.cg-node--hollow {
+  box-shadow: none;
+  border: 1px dashed var(--line-hair);
+  /* Empty of notes, but a colour the user picked still shows. */
+  background: var(--node-fill, transparent);
+}
+.cg-node--selected {
+  box-shadow: var(--shadow-node), 0 0 0 2px var(--accent), 0 0 0 6px var(--accent-dim);
+}
+.cg-node--hollow.cg-node--selected {
+  border-color: var(--accent);
+}
+
+/* SVG shapes draw their own outline; the container goes transparent. */
+.cg-node--svg {
+  background: transparent;
+  box-shadow: none;
+  padding: var(--sp-3) var(--sp-5);
+}
+.cg-node--svg.cg-node--hollow {
+  border: none;
+}
+.cg-node__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: var(--node-fill, transparent);
+  stroke: var(--line-hair);
+  stroke-width: 1;
+  filter: drop-shadow(0 2px 6px rgba(20, 24, 35, 0.10));
+  pointer-events: none;
+}
+.cg-node--svg.cg-node--selected .cg-node__svg {
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.cg-node__body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 0;
+  text-align: center;
+}
+/* Title plus, on the round shapes, the status spine sitting right beside it. */
+.cg-node__title-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  max-width: 100%;
+}
+.status-spine--inline {
+  position: static;
+  flex: none;
+  width: 3px;
+  height: 15px;
+  border-radius: var(--radius-pill);
+}
+.cg-node__body--described .cg-node__title-row {
+  align-self: flex-start;
+}
+.cg-node__title {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.cg-node__title--small {
+  font-size: 11px;
+}
+.cg-node__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--accent);
+  background: transparent;
+  color: var(--text-hi);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  outline: none;
+}
+
+/* Card body: title, then description when set and shown (§3.2). */
+.cg-node__body--described {
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 2px;
+}
+.cg-node__body--described .cg-node__title {
+  -webkit-line-clamp: 2;
+}
+.cg-node__description {
+  font-size: 11.5px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--text-mid);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.cg-node__footer {
+  position: absolute;
+  left: var(--sp-4);
+  right: var(--sp-3);
+  bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  pointer-events: none;
+}
+/*
+ * Every mark in this row is one lucide icon at one size and one stroke weight.
+ * It used to be a mix — an SVG icon beside a brace pair, a box character and a
+ * lightning glyph — and no amount of per-glyph nudging made those agree: three
+ * typefaces draw at three optical sizes on three baselines, and the row read as
+ * scattered however carefully each was placed. Sharing a drawing system is what
+ * makes them match; the box below only keeps them honest.
+ */
+.cg-node__glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  color: var(--text-low);
+}
+.cg-node__glyph svg {
+  display: block;
+  width: 12px;
+  height: 12px;
+  stroke-width: 1.75;
+}
+.cg-node__glyph--data {
+  color: var(--edge-data);
+  margin-left: auto;
+}
+/* Drawn by an agent (v1.7 §4): a mark, not an alarm — quieter than every other
+   glyph in the row. The footer is click-through so it never steals a drag, so
+   this one glyph takes its pointer events back to be able to say who and when. */
+.cg-node__glyph--agent {
+  opacity: 0.5;
+  pointer-events: auto;
+}
+
+/* ---- chip variant (§4.2) ---- */
+.cg-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  height: 28px;
+  padding: 0 var(--sp-3);
+  border-radius: var(--radius-pill);
+  background: var(--node-fill, var(--node-paper));
+  box-shadow: var(--shadow-node);
+  color: var(--text-hi);
+  white-space: nowrap;
+  animation: node-in var(--dur-base) var(--ease);
+  transition: box-shadow var(--dur-fast) var(--ease);
+}
+.cg-chip--hollow {
+  box-shadow: none;
+  border: 1px dashed var(--line-hair);
+  background: var(--node-fill, transparent);
+}
+.cg-chip.is-selected {
+  box-shadow: var(--shadow-node), 0 0 0 2px var(--accent), 0 0 0 5px var(--accent-dim);
+}
+.cg-chip__dot {
+  width: 2.5px;
+  height: 14px;
+  border-radius: var(--radius-pill);
+  flex: none;
+}
+.cg-chip__title {
+  font-size: 12px;
+  font-weight: 500;
+}
+.cg-chip__input {
+  border: none;
+  background: transparent;
+  color: var(--text-hi);
+  font-size: 12px;
+  font-weight: 500;
+  outline: none;
+  min-width: 40px;
+}
+.cg-chip__badge {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-low);
+}
+.cg-chip__badge svg {
+  display: block;
+  stroke-width: 1.75;
+}
+.cg-chip__data {
+  width: 5px;
+  height: 5px;
+  border-radius: var(--radius-pill);
+  background: var(--text-low);
+  flex: none;
+}
+
+/* ---- frames (§4.1) ---- */
+.cg-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-panel);
+  background: color-mix(in srgb, var(--frame-tint) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--frame-tint) 92%, var(--line-hair));
+  transition: width var(--dur-frame) var(--ease), height var(--dur-frame) var(--ease),
+    box-shadow var(--dur-fast) var(--ease);
+}
+.cg-frame.is-selected {
+  box-shadow: 0 0 0 2px var(--accent), 0 0 0 6px var(--accent-dim);
+}
+.cg-frame--collapsed {
+  background: color-mix(in srgb, var(--frame-tint) 70%, var(--bg-card));
+  box-shadow: var(--shadow-node);
+}
+
+.cg-frame__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  height: 40px;
+  padding: 0 var(--sp-3) 0 var(--sp-2);
+}
+.cg-frame__chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: var(--radius-control);
+  background: none;
+  color: var(--text-mid);
+  cursor: pointer;
+}
+.cg-frame__chevron:hover {
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--text-hi);
+}
+.cg-frame__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-hi);
+  cursor: text;
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cg-frame__input {
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  border-bottom: 1px solid var(--accent);
+  background: transparent;
+  color: var(--text-hi);
+  outline: none;
+  max-width: 60%;
+}
+.cg-frame__count {
+  font-size: var(--type-label);
+  color: var(--text-low);
+}
+.cg-frame__strip {
+  margin-left: auto;
+  width: 56px;
+  flex: none;
+}
+
+/* ---- text labels (§4.3) ---- */
+.cg-text {
+  padding: 2px var(--sp-1);
+  border-radius: var(--radius-control);
+  color: var(--text-mid);
+  font-weight: 500;
+  cursor: default;
+}
+/*
+ * Once a width has been dragged the box owns it, and the words wrap inside.
+ * Until then there is no width at all and the node is as wide as its longest
+ * line — which is what every text on every existing board still is.
+ */
+.cg-text--sized {
+  width: 100%;
+  box-sizing: border-box;
+}
+.cg-text.is-selected {
+  box-shadow: 0 0 0 2px var(--accent-dim);
+}
+/* One weight across the sizes — bold is a toggle, not a side effect of size. */
+.cg-text--sm {
+  font-size: 13px;
+}
+.cg-text--md {
+  font-size: 17px;
+}
+.cg-text--lg {
+  font-size: 24px;
+}
+.cg-text--bold {
+  font-weight: 700;
+}
+.cg-text--italic {
+  font-style: italic;
+}
+.cg-text--underline {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.cg-text__value {
+  white-space: pre-wrap;
+  /* A url or a long identifier must break rather than push the box wider than
+     the width somebody chose for it. */
+  overflow-wrap: anywhere;
+}
+.cg-text__input {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background: transparent;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  /* The UA gives a textarea its own padding; the span it replaces has none,
+     and any difference between the two is a visible jump on entering edit. */
+  padding: 0;
+  border-bottom: 1px solid var(--accent);
+  /* Fills a box that has a width; falls back to a sensible one that has not. */
+  width: 100%;
+  min-width: 120px;
+  box-sizing: border-box;
+}
+.cg-text--sized .cg-text__input {
+  min-width: 0;
+}
+
+/*
+ * The two width grips. Invisible until the text is selected — this is an
+ * annotation, and furniture on it competes with the thing it annotates — and
+ * wider than they look, because a 1px line is not a target.
+ */
+.cg-text__grip {
+  border: none !important;
+  background: transparent !important;
+  width: 10px !important;
+}
+.cg-text.is-selected .cg-text__grip::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  border-radius: 1px;
+  background: var(--accent-dim);
+}
+.cg-text__grip:hover::after {
+  background: var(--accent);
+}
+
+/* ---- handles: invisible until hover, generous hit target ---- */
+.cg-handle {
+  width: 9px;
+  height: 9px;
+  border: 1.5px solid var(--accent);
+  background: var(--bg-card);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease);
+}
+
+/*
+ * The hit area grows *outward only*. Growing it in every direction covered the
+ * whole node on a short chip, so every press started a connection instead of a
+ * drag. `50%` stops each area at the handle's centre — i.e. the node's edge —
+ * leaving the body free to drag while the dots stay easy to grab.
+ */
+.cg-handle::after {
+  content: '';
+  position: absolute;
+  inset: -13px;
+}
+.react-flow__handle-top.cg-handle::after {
+  bottom: 50%;
+}
+.react-flow__handle-bottom.cg-handle::after {
+  top: 50%;
+}
+.react-flow__handle-left.cg-handle::after {
+  right: 50%;
+}
+.react-flow__handle-right.cg-handle::after {
+  left: 50%;
+}
+
+/*
+ * A chip is only 28px tall, so the dots are trimmed to keep the pill draggable.
+ * Their placement is left to React Flow — it anchors each side differently, and
+ * overriding `transform` here pushed the right and bottom dots inside the pill.
+ */
+.cg-chip .cg-handle {
+  width: 8px;
+  height: 8px;
+}
+.cg-node:hover .cg-handle,
+.cg-chip:hover .cg-handle,
+.cg-node--selected .cg-handle,
+.cg-chip.is-selected .cg-handle {
+  opacity: 1;
+}
+
+.cg-resize-line {
+  border-color: var(--accent) !important;
+}
+.cg-resize-handle {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 2px !important;
+  background: var(--bg-card) !important;
+  border: 1.5px solid var(--accent) !important;
+}
+
+/* ---- edges ---- */
+.react-flow__edge-path {
+  stroke: var(--edge-line);
+  stroke-width: 1.5;
+}
+.react-flow__edge .cg-edge--data {
+  stroke: var(--edge-data);
+  stroke-width: 1.75;
+}
+.react-flow__edge.selected .react-flow__edge-path,
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: var(--accent);
+}
+.react-flow__arrowhead * {
+  fill: var(--edge-line);
+}
+.cg-edge-label-wrap {
+  position: absolute;
+  pointer-events: all;
+}
+.cg-edge-label {
+  padding: 2px var(--sp-2);
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-node);
+  color: var(--text-mid);
+  font-size: 11px;
+  font-family: var(--font-mono);
+  cursor: text;
+}
+.cg-edge-input {
+  width: 118px;
+  padding: 2px var(--sp-2);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  color: var(--text-hi);
+  font-size: 11px;
+  font-family: var(--font-mono);
+  outline: none;
+}
+.cg-edge-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-chrome);
+  -webkit-backdrop-filter: var(--chrome-blur);
+  backdrop-filter: var(--chrome-blur);
+  border: 1px solid var(--line-hair);
+  box-shadow: var(--shadow-float);
+}
+.cg-edge-toolbar__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 22px;
+  padding: 0 var(--sp-1);
+  border: none;
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--text-mid);
+  cursor: pointer;
+}
+.cg-edge-toolbar__btn:hover {
+  background: var(--bg-inset);
+  color: var(--text-hi);
+}
+.cg-edge-toolbar__btn.is-active {
+  background: var(--accent);
+  color: #fff;
+}
+.cg-edge-toolbar__btn--text {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  padding: 0 var(--sp-2);
+}
+.cg-edge-toolbar__sep {
+  width: 1px;
+  height: 14px;
+  background: var(--line-hair);
+}
+
+/* ---- floating selection toolbar ---- */
+.cg-toolbar {
+  height: 40px;
+  padding: 0 var(--sp-1);
+}
+.cg-toolbar__group {
+  display: flex;
+  gap: 2px;
+}
+.cg-toolbar__status {
+  font-size: var(--type-label);
+  gap: var(--sp-2);
+}
+.cg-toolbar__text-size {
+  font-weight: 600;
+  line-height: 1;
+}
+.cg-toolbar__danger:hover {
+  background: var(--danger) !important;
+  color: #fff !important;
+}
+.cg-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-pill);
+}
+.cg-swatch {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  padding: 0;
+}
+.cg-swatch.is-active {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* ---- tool pill drag-out ghost (§4.5) ---- */
+.tool-pill {
+  padding: 0 var(--sp-1);
+}
+.tool-ghost {
+  position: fixed;
+  z-index: var(--z-overlay);
+  transform: translate(-50%, -50%) scale(0.9);
+  pointer-events: none;
+  opacity: 0.92;
+}
+.tool-ghost__frame {
+  width: 160px;
+  height: 110px;
+  border-radius: var(--radius-panel);
+  background: color-mix(in srgb, var(--node-slate) 30%, transparent);
+  border: 1px solid var(--line-hair);
+}
+.tool-ghost__node {
+  width: 140px;
+  height: 60px;
+  border-radius: var(--radius-card);
+  background: var(--node-paper);
+  box-shadow: var(--shadow-float);
+}
+.tool-ghost__chip {
+  width: 96px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  background: var(--node-paper);
+  box-shadow: var(--shadow-float);
+}
+.tool-ghost__text {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-mid);
+}
+
+.chrome-minimap-toggle {
+  bottom: 0;
+  right: 0;
+}
+
+/* ---- react-flow chrome ---- */
+.react-flow__minimap {
+  background: var(--bg-chrome);
+  -webkit-backdrop-filter: var(--chrome-blur);
+  backdrop-filter: var(--chrome-blur);
+  border: 1px solid var(--line-hair);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-float);
+  margin-right: var(--chrome-inset);
+  margin-bottom: calc(var(--chrome-height) + var(--chrome-inset) * 2);
+}
+.react-flow__attribution {
+  display: none;
+}
+.react-flow__selection {
+  background: var(--accent-dim);
+  border: 1px solid var(--accent);
+}
+.react-flow__node-frame {
+  cursor: grab;
+}
+.zoom-pill__value {
+  min-width: 52px;
+  font-size: var(--type-label);
+}
+
+/* Data-carrying edge marker (§6.1) */
+.cg-edge-idle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+}
+.cg-edge-data-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-node);
+  color: var(--edge-data);
+}
+.cg-edge-toolbar__btn--danger:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
+/* ---- unknown node type (§1) ---- */
+/* Sits on the node wrapper, outside the card, so no shape has to make room for it. */
+.cg-node__type-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-inset);
+  border: 1px solid var(--line-hair);
+  color: var(--text-low);
+  font-size: 9px;
+  line-height: 1;
+  pointer-events: auto;
+}
+
+/*
+ * Read-only (v1.6 §5): nothing you could drag a new connection out of.
+ *
+ * Hidden by never revealing them, and *never* with `display: none`. React Flow
+ * measures each handle from the DOM to learn where an edge should leave a node;
+ * an unrendered handle has no box, so every edge falls back to the node origin
+ * and the whole board collapses into one stack of lines. It only ever went
+ * wrong for the person a board was shared with, which is exactly the view no
+ * one is looking at while building one.
+ *
+ * They are already `opacity: 0` at rest — this cancels the hover and selected
+ * reveals and takes them out of the hit test, so they stay laid out and inert.
+ */
+.cg-canvas--readonly .cg-handle {
+  pointer-events: none;
+}
+.cg-canvas--readonly .cg-node:hover .cg-handle,
+.cg-canvas--readonly .cg-chip:hover .cg-handle,
+.cg-canvas--readonly .cg-node--selected .cg-handle,
+.cg-canvas--readonly .cg-chip.is-selected .cg-handle {
+  opacity: 0;
+}
+
+/*
+ * While an edge's heads are being moved, a card's own connection handles are
+ * out of play entirely — not merely non-functional. `nodesConnectable={false}`
+ * stops a drag from starting one, but the element is still there to swallow the
+ * click, and it is within a few pixels of the thing being aimed at.
+ */
+.cg-canvas--heads .cg-handle {
+  /* Still out of the way. Nothing is being placed yet, so a card's faces are
+     not targets — showing them here just puts a ring of dots around every card
+     for no reason, and they sit exactly where the ends are. They appear the
+     moment an end is actually lifted (`.cg-canvas--attaching`, below). */
+  pointer-events: none;
+  opacity: 0;
+}
+/*
+ * And they stay hidden on hover. The reveal-on-hover rule further up is
+ * `.cg-node:hover .cg-handle` — one specificity step above the rule directly
+ * above this one — so without naming the same shape here, moving the pointer
+ * anywhere near a card lit up four dots on top of the very ends being aimed at.
+ * Same construction as the read-only rule; it exists for the same reason.
+ */
+.cg-canvas--heads .cg-node:hover .cg-handle,
+.cg-canvas--heads .cg-chip:hover .cg-handle,
+.cg-canvas--heads .cg-node--selected .cg-handle,
+.cg-canvas--heads .cg-chip.is-selected .cg-handle {
+  opacity: 0;
+}
+/* While an end *is* lifted the faces are targets again, and hover is welcome. */
+.cg-canvas--attaching .cg-node:hover .cg-handle,
+.cg-canvas--attaching .cg-chip:hover .cg-handle,
+.cg-canvas--attaching .cg-node--selected .cg-handle,
+.cg-canvas--attaching .cg-chip.is-selected .cg-handle {
+  opacity: 1;
+}
+
+
+/* ---- moving a connector's ends by clicking (§4.4) ---- */
+
+/* The two ends, while the mode is on. Clicked, not dragged. */
+/*
+ * Edges paint under nodes, which put the one thing you are aiming at beneath
+ * the one thing you can hit by accident. While ends are being moved the
+ * connector is the subject, so its whole layer comes forward — above even a
+ * selected card, which React Flow lifts to 1000. Scoped to the mode: every
+ * other time, a card belongs on top of the lines that reach it.
+ */
+/*
+ * Only while the ends are being moved. A selected connector puts a card's faces
+ * away but does not come forward over the cards: its interaction path would
+ * then take clicks meant for whatever it happens to cross.
+ */
+.cg-canvas--heads:not(.cg-canvas--selected-only) .react-flow__edges {
+  z-index: 1002;
+}
+/*
+ * The shoulder: a grip lying across the segment it moves, so its shape says
+ * which way it travels before you touch it. The box around it is three times
+ * its width and invisible, because a 6px bar is not something anyone can be
+ * asked to hit on a moving canvas.
+ *
+ * It is drawn in the label layer, not the edge's SVG — see the comment where it
+ * is rendered. That layer is `pointer-events: none`, so each grip has to ask
+ * for the pointer back.
+ */
+.cg-edge-shoulder {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  pointer-events: all;
+  cursor: grab;
+}
+.cg-edge-shoulder:active {
+  cursor: grabbing;
+}
+.cg-edge-shoulder__grip {
+  display: block;
+  border: 1.5px solid var(--accent);
+  border-radius: 3px;
+  background: var(--bg-card);
+}
+/* Across the segment it moves: upright on one that slides sideways, and flat
+   on one that slides up and down. */
+.cg-edge-shoulder--x .cg-edge-shoulder__grip {
+  width: 6px;
+  height: 18px;
+}
+.cg-edge-shoulder--y .cg-edge-shoulder__grip {
+  width: 18px;
+  height: 6px;
+}
+.cg-edge-shoulder:hover .cg-edge-shoulder__grip,
+.cg-edge-shoulder:active .cg-edge-shoulder__grip {
+  border-color: var(--bg-card);
+  background: var(--accent);
+}
+
+.cg-edge-head-hit {
+  cursor: pointer;
+}
+.cg-edge-head__ring {
+  fill: transparent;
+  pointer-events: all;
+}
+.cg-edge-head {
+  fill: var(--bg-card);
+  stroke: var(--accent);
+  stroke-width: 2;
+  pointer-events: none;
+}
+/* Hover is driven by the ring, not the dot: the answer to "am I on it?" has to
+   come from the area you can actually hit, or it arrives too late to help. */
+.cg-edge-head-hit:hover .cg-edge-head {
+  fill: var(--accent);
+  stroke: var(--bg-card);
+}
+/* Lifted: this end is in the air, waiting for a face to be clicked. */
+.cg-edge-head.is-lifted {
+  fill: var(--accent);
+  stroke: var(--bg-card);
+}
+
+/*
+ * While an end is lifted, every face on every card is a target — so they are
+ * all visible and all clickable. That is the opposite of the heads-mode rule
+ * further up, which takes them out of the way precisely because nothing is
+ * being placed yet; `!important` is what settles the two, since both classes
+ * are on the canvas at once.
+ */
+.cg-canvas--attaching .cg-handle {
+  pointer-events: all !important;
+  opacity: 1 !important;
+  cursor: pointer;
+}
+.cg-canvas--attaching .cg-handle:hover {
+  background: var(--accent);
+}
